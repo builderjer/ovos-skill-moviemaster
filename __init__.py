@@ -233,10 +233,7 @@ class MovieMaster(OVOSSkill):
 
     @intent_handler("movie.genres.intent")
     def handle_movie_genre(self, message):
-        """ Gets the genres the movie belongs to.
-
-        The search_depth setting is avaliable at home.mycroft.ai
-        """
+        """ Gets the genres the movie belongs to."""
         movie = message.data.get("movie")
         LOG.debug(f"requested cast for movie {movie}")
         self._search_for_movie(movie)
@@ -258,8 +255,7 @@ class MovieMaster(OVOSSkill):
 
     @intent_handler("movie.runtime.intent")
     def handle_movie_length(self, message):
-        """ Gets the runtime of the searched movie.
-        """
+        """ Gets the runtime of the searched movie."""
         movie = message.data.get("movie")
         LOG.debug(f"requested runtime for movie {movie}")
         self._search_for_movie(movie)
@@ -274,8 +270,7 @@ class MovieMaster(OVOSSkill):
 
     @intent_handler("movie.recommendations.intent")
     def handle_movie_recommendations(self, message):
-        """ Gets the top movies that are similar to the suggested movie.
-        """
+        """ Gets the top movies that are similar to the suggested movie."""
         movie = message.data.get("movie")
         LOG.debug(f"requested recommendations like the movie {movie}")
         self._search_for_movie(movie)
@@ -299,8 +294,6 @@ class MovieMaster(OVOSSkill):
         """ Gets the daily popular movies.
 
         The list changes daily, and are not just recent movies.
-
-        The search_depth setting is avaliable at home.mycroft.ai
         """
         try:
             movies = []
@@ -310,14 +303,6 @@ class MovieMaster(OVOSSkill):
                     break
             # Lets see...I think we will set up the dialog again.
             popular_movies, last_movie = self._create_dialog_list(movies)
-            # lastMovie = popular_movies.pop()
-            # popularDialog = ""
-            # for movie in popular_movies:
-            #     if popularDialog == "":
-            #         popularDialog = movie.title
-            #     else:
-            #         popularDialog = popularDialog + ", " + movie.title
-            # popularDialog = popularDialog + " and {}".format(lastMovie.title)
             self.speak_dialog("movie.popular", {"popularlist": popular_movies, "lastmovie": last_movie})
 
         # If the title can not be found, it creates an IndexError
@@ -328,8 +313,6 @@ class MovieMaster(OVOSSkill):
     def handle_top_movies(self, message):
         """ Gets the top rated movies of the day.
         The list changes daily, and are not just recent movies.
-
-        The search_depth setting is avaliable at home.mycroft.ai
         """
         LOG.debug("requested the top movies playing")
         try:
@@ -340,16 +323,6 @@ class MovieMaster(OVOSSkill):
                 if len(top_movies) >= self.search_depth:
                     break
             movie_list, last_movie = self._create_dialog_list(top_movies)
-            # topMovies = Movie().top_rated()[:self.searchDepth]
-            # # Set up the dialog
-            # lastMovie = topMovies.pop()
-            # topDialog = ""
-            # for movie in topMovies:
-            #     if topDialog == "":
-            #         topDialog = movie.title
-            #     else:
-            #         topDialog = topDialog + ", {}".format(movie.title)
-            # topDialog = topDialog + " and {}".format(lastMovie.title)
             self.speak_dialog("movie.top", {"toplist": movie_list, "lastmovie": last_movie})
 
         # If the title can not be found, it creates an IndexError
