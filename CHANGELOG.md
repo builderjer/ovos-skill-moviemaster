@@ -1,8 +1,8 @@
 # Changelog
 
-## [Unreleased](https://github.com/builderjer/ovos-skill-moviemaster/tree/HEAD)
+## [V0.0.1a2](https://github.com/builderjer/ovos-skill-moviemaster/tree/V0.0.1a2) (2024-01-28)
 
-[Full Changelog](https://github.com/builderjer/ovos-skill-moviemaster/compare/3f841b6b950d223958ad4616b7d08910436509c5...HEAD)
+[Full Changelog](https://github.com/builderjer/ovos-skill-moviemaster/compare/3f841b6b950d223958ad4616b7d08910436509c5...V0.0.1a2)
 
 **Merged pull requests:**
 
