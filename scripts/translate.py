@@ -7,34 +7,38 @@ from ovos_utils.bracket_expansion import expand_options
 from ovos_translate_plugin_deepl import DeepLTranslator
 
 
+BASE_LANGS = {"de-de", "es-es", "fr-fr", "it-it", "nl-nl", "pt-pt"}
 API_KEY = os.getenv("API_KEY")
 if not API_KEY:
-    raise ValueError
+    raise ValueError("environment variable `API_KEY` not set")
+BASE_FOLDER = os.getenv("LOCALE_FOLDER")
+if not BASE_FOLDER:
+    raise ValueError("environment variable `LOCALE_FOLDER` not set")
+elif not isdir(BASE_FOLDER):
+    raise ValueError(f"environment variable `LOCALE_FOLDER` is not a folder: {BASE_FOLDER}")
+
+# old skill structure
+old_voc_folder = join(dirname(BASE_FOLDER), "vocab")
+old_dialog_folder = join(dirname(BASE_FOLDER), "dialog")
+old_res_folder = [old_voc_folder, old_dialog_folder]
+
+
+def get_target_languages():
+    langs = set()
+    folder_to_check = [BASE_FOLDER] + old_res_folder
+    for folder in folder_to_check:
+        if not exists(folder):
+            continue
+        for subfolder in os.listdir(folder):
+            # only lancodes in the form of xx-xx
+            if len(subfolder) == 5 and subfolder[2] == "-":
+                langs.add(subfolder)
+    langs = langs.union(BASE_LANGS)
+    return langs
 
 single_lang = os.getenv("TARGET_LANG")
-target_langs = (single_lang,) if single_lang else ("de-de",
-                                                   "ca-es",
-                                                   "cs-cz",
-                                                   "da-dk",
-                                                   "es-es",
-                                                   "fr-fr",
-                                                   "hu-hu",
-                                                   "it-it",
-                                                   "nl-nl",
-                                                   "pl-pl",
-                                                   "pt-pt",
-                                                   "ru-ru",
-                                                   "sv-fi",
-                                                   "sv-se")
-
-
-base_folder = dirname(dirname(__file__))
-res_folder = join(base_folder, "locale")
-
-# old structure
-old_voc_folder = join(base_folder, "vocab")
-old_dialog_folder = join(base_folder, "dialog")
-old_res_folder = [old_voc_folder, old_dialog_folder]
+target_langs = (single_lang,) if single_lang \
+            else get_target_languages()
 
 src_lang="en-us"
 src_files={}
@@ -99,9 +103,9 @@ def migrate_locale(folder):
         path = join(folder, lang)
         for root, dirs, files in os.walk(path):
             for file in files:
-                if file_location(file, join(res_folder, lang)) is None:
+                if file_location(file, join(BASE_FOLDER, lang)) is None:
                     rel_path = root.replace(folder, "").lstrip("/")
-                    new_path = join(res_folder, rel_path)
+                    new_path = join(BASE_FOLDER, rel_path)
                     os.makedirs(new_path, exist_ok=True)
                     shutil.move(join(root, file),
                                 join(new_path, file))
@@ -114,7 +118,7 @@ for folder in  old_res_folder:
         continue
     migrate_locale(folder)
 
-src_folder = join(res_folder, src_lang)
+src_folder = join(BASE_FOLDER, src_lang)
 for root, dirs, files in os.walk(src_folder):
     if src_lang not in root:
         continue
@@ -125,13 +129,14 @@ for root, dirs, files in os.walk(src_folder):
             src_files[rel_path] = file_path
 
 for lang in target_langs:
+    lang = lang.lower()
     # service cant translate
     if not tx.get_langcode(lang):
         continue
     for rel_path, src in src_files.items():
         filename = Path(rel_path).name
-        dst = file_location(filename, join(res_folder, lang)) or \
-                join(res_folder, lang, rel_path)
+        dst = file_location(filename, join(BASE_FOLDER, lang)) or \
+                join(BASE_FOLDER, lang, rel_path)
         if entities(src) != entities(dst):
             if exists(dst):
                 os.remove(dst)

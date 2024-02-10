@@ -1,14 +1,19 @@
 import json
-from os.path import join, dirname
+import os
 
-base_dir = dirname(dirname(__file__))
-
+BASE_FOLDER = os.getenv("BASE_FOLDER")
+if not BASE_FOLDER:
+    raise ValueError("environment variable `LOCALE_FOLDER` not set")
+elif not os.path.exists(BASE_FOLDER):
+    raise ValueError(f"environment variable `LOCALE_FOLDER` is not a folder: {BASE_FOLDER}")
+VERSION_FILE = os.getenv("VERSION_FILE")
+if not os.path.isfile(VERSION_FILE):
+    raise ValueError(f"environment variable `VERSION_FILE` is not a file: {VERSION_FILE}")
 
 def get_version():
     """ Find the version of the package"""
-    version_file = join(base_dir, 'version.py')
     major, minor, build, alpha = (None, None, None, None)
-    with open(version_file) as f:
+    with open(VERSION_FILE) as f:
         for line in f:
             if 'VERSION_MAJOR' in line:
                 major = line.split('=')[1].strip()
@@ -27,10 +32,8 @@ def get_version():
         version += f"a{alpha}"
     return version
 
-
-desktop_dir = join(base_dir, "res", "desktop")
-
-jsonf = join(desktop_dir, "skill.json")
+desktop_dir = os.path.join(BASE_FOLDER, "res", "desktop")
+jsonf = os.path.join(desktop_dir, "skill.json")
 
 with open(jsonf) as f:
     data = json.load(f)
