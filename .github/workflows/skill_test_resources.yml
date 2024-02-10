@@ -1,0 +1,96 @@
+name: Skill Ressource Tests
+on:
+  workflow_call:
+    inputs:
+      runner:
+        description: 'The runner to use'
+        type: string
+        default: "ubuntu-latest"
+      branch:
+        description: 'The branch to use'
+        type: string
+        default: ${{ github.ref }}
+      action_branch:
+        description: 'The shared action branch to checkout'
+        type: string
+        default: main
+      timeout:
+        type: number
+        default: 15
+      system_deps:
+        description: 'Additional system dependencies (whitespace delimited) to install'
+        required: false
+        type: string
+      python_matrix:
+        description: 'Python matrix (string) to use'
+        type: string
+        default: '["3.8", "3.9", "3.10", "3.11"]'
+      pip_packages:
+        description: 'Additional Python packages (whitespace delimited) to install'
+        required: false
+        type: string
+      intent_testfile:
+        description: 'Intent file to test'
+        required: true
+        type: string
+
+jobs:
+  test_resources:
+    runs-on: ${{ inputs.runner }}
+    timeout-minutes: ${{ inputs.timeout }}
+    env:
+      INTENT_TEST_FILE: ${{ github.workspace }}/action/skill/${{ inputs.intent_testfile }}
+    strategy:
+      matrix:
+        python-version: ${{ fromJSON(inputs.python_matrix) }}
+    steps:
+      - name: Checkout Skill Repo
+        uses: actions/checkout@v4
+        with:
+          ref: ${{inputs.branch}}
+          path: action/skill/
+      - name: Checkout Scripts Repo
+        uses: actions/checkout@v4
+        with:
+          repository: OpenVoiceOS/.github
+          ref: ${{inputs.action_branch}}
+          path: action/github/
+      - name: Set up python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install Common System Dependencies
+        run: |
+          sudo apt update
+          xargs sudo apt install -y < ${{ github.workspace }}/action/github/requirements/sys_deb_common_deps.txt
+      - name: Install Custom System Dependencies
+        if: ${{ inputs.system_deps != null }}
+        run: |
+          sudo apt install -y ${{ inputs.system_deps }}
+      - name: upgrade pip
+        run: |
+          pip install --upgrade pip
+      - name: Install Common Python Requirements
+        run: |
+          pip install -r ${{ github.workspace }}/action/github/requirements/pip_skill_tests.txt
+      - name: Install Custom Python Requirements
+        if: ${{ inputs.pip_packages != null }}
+        run: |
+          pip install ${{ inputs.pip_packages }}
+      - name: Install Python Skill
+        run: |
+          cd ${{ github.workspace }}/action/skill
+          pip install .
+          PKG_NAME=$(python setup.py --name)
+          BASE_FOLDER=$(echo $PKG_NAME | tr '-' '_')
+          PKG_FOLDER=$(pip show -f $PKG_NAME | grep Location | cut -d ' ' -f 2)
+          echo "TEST_SKILL_PKG_FOLDER=$PKG_FOLDER/$BASE_FOLDER" >> $GITHUB_ENV
+      - name: Update Resource Testfile
+        run: |
+          python action/github/scripts/update_intent_testfile.py
+      - name: Test Skill Resources
+        run: |
+          export INTENT_ENGINE="padatious"
+          echo "Intent Test File: ${{ env.INTENT_TEST_FILE }}"
+          echo "Skill Folder: ${{ env.TEST_SKILL_PKG_FOLDER }}"
+          pytest action/github/test/test_skill_resourcesV2.py

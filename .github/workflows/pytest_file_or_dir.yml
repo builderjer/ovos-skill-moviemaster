@@ -1,0 +1,180 @@
+name: Unit Tests
+on:
+  workflow_call:
+    inputs:
+      runner:
+        type: string
+        default: "ubuntu-latest"
+      branch:
+        description: 'Branch to use'
+        type: string
+        default: ${{ github.ref }}
+      action_branch:
+        description: 'The shared action branch to checkout'
+        type: string
+        default: main
+      system_deps:
+        description: 'Additional system dependencies (whitespace delimited) to install'
+        required: false
+        type: string
+      python_matrix:
+        description: 'Python matrix (string) to use'
+        type: string
+        default: '["3.8", "3.9", "3.10", "3.11"]'
+      pip_packages:
+        description: 'Additional Python packages (whitespace delimited) to install'
+        type: string
+        required: false
+      pip_install_dirs:
+        description: 'Additional local Python package directories to install'
+        type: string
+        required: false
+      install_extras:
+        description: 'comma delimited extras to install the package with (eg: "test,dev")'
+        type: string
+        required: false
+      timeout_minutes:
+        description: 'Timeout in minutes for the job'
+        type: number
+        default: 15
+      test_location:
+        description: 'test file or directory to run relative to the base folder'
+        type: string
+        default: test/unittests
+      is_skill:
+        description: 'Whether this is an ovos skill or not'
+        type: boolean
+        default: false
+      codecov:
+        description: 'Whether to record the test code coverage'
+        type: boolean
+        default: true
+      append_coverage:
+        description: 'Whether to append coverage to codecov, used for consecutive runs'
+        type: boolean
+        default: false
+      upload_coverage:
+        description: 'Whether to upload coverage to codecov'
+        type: boolean
+        default: true
+
+jobs:
+  unit_tests:
+    strategy:
+      matrix:
+        python-version: ${{ fromJSON(inputs.python_matrix) }}
+    runs-on: ${{ inputs.runner }}
+    timeout-minutes: ${{ inputs.timeout_minutes }}
+    env:
+      FIRST_PYTHON_VERSION: ${{ fromJSON(inputs.python_matrix)[0] }}
+    steps:
+      - name: Checkout Package Repo
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.branch }}
+          path: action/package/
+          fetch-depth: 0
+      - name: Checkout Scripts Repo
+        uses: actions/checkout@v4
+        with:
+          repository: OpenVoiceOS/.github
+          ref: ${{ inputs.action_branch }}
+          path: action/github/
+      - name: Set up python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: set codecov run flag
+        id: codecov
+        run: |
+          if [ "${{ matrix.python-version }}" = "$FIRST_PYTHON_VERSION" ] && [ "${{ inputs.codecov }}" = "true" ]; then
+            echo "should_run=true" >> "$GITHUB_OUTPUT"
+            echo "codecov will run"
+          else
+            echo "should_run=false" >> "$GITHUB_OUTPUT"
+            echo "codecov will not run"
+          fi
+      - name: Install Common System Dependencies
+        run: |
+          sudo apt update
+          xargs sudo apt install -y < ${{ github.workspace }}/action/github/requirements/sys_deb_common_deps.txt
+      - name: Install Custom System Dependencies
+        if: ${{ inputs.system_deps != null }}
+        run: |
+          sudo apt install -y ${{ inputs.system_deps }}
+      - name: upgrade pip
+        run: |
+          pip install --upgrade pip
+      - name: Install Common Python Requirements
+        run: |
+          if [ "${{ inputs.is_skill }}" = "true" ]; then
+            pip install -r ${{ github.workspace }}/action/github/requirements/pip_skill_tests.txt
+          else
+            pip install -r ${{ github.workspace }}/action/github/requirements/pip_tests.txt
+          fi
+      - name: Install Custom Python Requirements
+        if: ${{ inputs.pip_packages != null }}
+        run: |
+          pip install ${{ inputs.pip_packages }}
+      - name: Install Python Package Directories
+        if: ${{ inputs.pip_install_dirs != null }}
+        run: |
+          cd ${{ github.workspace }}/action/package/
+          IFS=$'\n' read -d '' -r -a dirs <<< "${{ inputs.pip_install_dirs }}"
+          for dir in "${dirs[@]}"
+          do
+            pip install -e "$dir"
+          done
+      - name: Install Package
+        run: |
+          cd ${{ github.workspace }}/action/package
+          PACKAGE_NAME=$(python setup.py --name)
+          if [ -n "${{ inputs.install_extras }}" ]; then
+            pip install -e .[${{ inputs.install_extras }}]
+          else
+            pip install -e .
+          fi
+          echo "PACKAGE_NAME=$PACKAGE_NAME" >> "$GITHUB_ENV"
+      - name: download test coverage artifact
+        if: ${{ steps.codecov.outputs.should_run == 'true' && inputs.append_coverage }} 
+        uses: actions/download-artifact@v4
+        with:
+          name: coverage_${{ github.repository_id }}
+          path: ${{ github.workspace }}/action/package/
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Test package with ${{ matrix.python-version }}
+        run: |
+          cd ${{ github.workspace }}/action/package/
+          if [ ${{ steps.codecov.outputs.should_run }} == 'true' ]; then
+            echo "Running tests with codecov"
+            if [ "${{ inputs.append_coverage }}" = "true" ]; then
+              pytest --cov-append --cov=./ --cov-report=xml ${{ inputs.test_location }}
+            else
+              pytest --cov=./ --cov-report=xml ${{ inputs.test_location }}
+              coverage report
+            fi
+          else
+            echo "Running tests without codecov"
+            pytest ${{ inputs.test_location }}
+          fi
+      - name: upload test coverage artifact
+        if: ${{ steps.codecov.outputs.should_run == 'true' && !inputs.upload_coverage }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage_${{ github.repository_id }}
+          overwrite: true
+          retention-days: 1
+          if-no-files-found: ignore
+          path: ${{ github.workspace }}/action/package/coverage.xml
+      - name: Upload coverage
+        if: ${{ steps.codecov.outputs.should_run == 'true' && inputs.upload_coverage }}
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: coverage.xml
+          root_dir: ${{ github.workspace }}/action/package
+          directory: ${{ github.workspace }}/action/package
+          working-directory: ${{ github.workspace }}/action/package
+          flags: unittests
+          name: ovos
+          verbose: true
