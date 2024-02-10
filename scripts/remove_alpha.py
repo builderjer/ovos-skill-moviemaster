@@ -1,7 +1,6 @@
 import fileinput
 import os
 
-
 version_file = os.getenv("VERSION_FILE")
 if not os.path.isfile(version_file):
     raise ValueError(f"environment variable `VERSION_FILE` is not a file: {version_file}")

@@ -26,7 +26,6 @@ on:
         description: 'A comma or newline-separated string of reviewers'
         type: string
         default: "emphasize"
-      
 
 jobs:
   Propose_translation:

@@ -18,12 +18,12 @@ on:
         description: 'The base folder to look for localization files'
         type: string
         default: locale
-      
 
 jobs:
   autotranslate:
     env:
       API_KEY: ${{secrets.DL_API_KEY}}
+
       LOCALE_FOLDER: ${{ github.workspace }}/action/package/${{ inputs.locale_folder }}
     runs-on: ubuntu-latest
     steps:
@@ -52,4 +52,3 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: autotranslate
-          repository: action/package/

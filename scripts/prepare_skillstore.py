@@ -10,7 +10,7 @@ if not branch:
 repo = os.getenv("REPO")
 if not repo:
     raise ValueError("environment variable `REPO` not set")
-author = "OpenVoiceOS"
+author = "builderjer"
 
 url = f"https://github.com/{author}/{repo}@{branch}"
 
@@ -35,7 +35,6 @@ desktopf = os.path.join(desktop_dir, f"{repo}.desktop")
 skill_code = os.path.join(BASE_FOLDER, "__init__.py")
 
 res_folder = os.path.join(BASE_FOLDER, "locale", "en-us")
-
 
 def read_samples(path):
     samples = []
