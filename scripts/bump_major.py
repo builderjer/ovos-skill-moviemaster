@@ -1,8 +1,11 @@
 import fileinput
-from os.path import join, dirname
+import os
 
 
-version_file = join(dirname(dirname(__file__)), "version.py")
+version_file = os.getenv("VERSION_FILE")
+if not os.path.isfile(version_file):
+    raise ValueError(f"environment variable `VERSION_FILE` is not a file: {version_file}")
+
 version_var_name = "VERSION_MAJOR"
 minor_var_name = "VERSION_MINOR"
 build_var_name = "VERSION_BUILD"
