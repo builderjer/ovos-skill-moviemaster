@@ -2,7 +2,7 @@ from datetime import datetime
 
 from ovos_utils import classproperty
 from ovos_utils.log import LOG
-from ovos_utils.intents import IntentBuilder
+from ovos_workshop.intents import IntentBuilder
 from ovos_utils.process_utils import RuntimeRequirements
 from ovos_workshop.decorators import intent_handler
 from ovos_workshop.skills import OVOSSkill
@@ -106,12 +106,9 @@ class MovieMaster(OVOSSkill):
 
     def _create_dialog_list(self, dialog_list):
         # create a list
-        # LOG.debug(f"Creating dialog list with: {dialog_list}")
         i = []
         for item in dialog_list:
-            # LOG.debug(f"item is: {item}")
             i.append(item)
-        # LOG.debug(type(i))
         dialog = ""
         last_item = i.pop()
         last_item = last_item.get("title", last_item.get("name"))
