@@ -1,0 +1,546 @@
+# Specify intents to test here. Valid test cases are as follows:
+
+# Basic intent match tests only:
+#lang:
+#  intent_name:
+#    - example utterance
+#    - other example utterance
+
+# Intent tests with expected vocab/entity matches:
+#lang:
+#  intent_name:
+#    - example_utterance:
+#        - expected vocab name
+#        - other expected vocab name
+
+# Intent tests with specific vocab/entity extraction tests:
+#lang:
+#  intent_name:
+#    - example_utterance:
+#        - expected_vocab_key: expected_vocab_value
+#        - expected_entity_key: expected_entity_value
+
+en-us:
+  genre.movie.search.intent:
+    - List movies that are a comedy
+    - Find movies that are a comedy
+    - List movies that are comedy
+    - Find movies that are comedy
+    - List films that are a comedy
+    - Find films that are a comedy
+    - List films that are comedy
+    - Find films that are comedy
+    - List comedy movies
+    - List comedy films
+    - Find comedy movies
+    - Find comedy films
+  movie.cast.intent:
+    - Who acts in the movie Stripes
+    - Who plays in the movie Stripes
+    - Who is in the movie Stripes
+    - Who acts in the film Stripes
+    - Who plays in the film Stripes
+    - Who is in the film Stripes
+    - Who acts in the flick Stripes
+    - Who plays in the flick Stripes
+    - Who is in the flick Stripes
+  movie.description.intent:
+      - What is the movie Stripes about
+      - What is the film Stripes about
+      - What is the flick Stripes about
+      - Tell me about the movie Stripes
+      - Tell me about the film Stripes
+      - Tell me about the flick Stripes
+      - Tell us about the movie Stripes
+      - Tell us about the film Stripes
+      - Tell us about the flick Stripes
+      - Give a description of the movie Stripes
+      - Give me a description of the movie Stripes
+      - Give us a description of the movie Stripes
+      - Give a synopsis of the movie Stripes
+      - Give me a synopsis of the movie Stripes
+      - Give us a synopsis of the movie
+      - Give a description of the film Stripes
+      - Give me a description of the film Stripes
+      - Give us a description of the film Stripes
+      - Give a synopsis of the film Stripes
+      - Give me a synopsis of the film Stripes
+      - Give us a synopsis of the film Stripes
+      - Give a description of the flick Stripes
+      - Give me a description of the flick Stripes
+      - Give us a description of the flick Stripes
+      - Give a synopsis of the flick Stripes
+      - Give me a synopsis of the flick Stripes
+      - Give us a synopsis of the flick Stripes
+      - Get a description of the movie Stripes
+      - Get me a description of the movie Stripes
+      - Get us a description of the movie Stripes
+      - Get a synopsis of the movie Stripes
+      - Get me a synopsis of the movie Stripes
+      - Get us a synopsis of the movie
+      - Get a description of the film Stripes
+      - Get me a description of the film Stripes
+      - Get us a description of the film Stripes
+      - Get a synopsis of the film Stripes
+      - Get me a synopsis of the film Stripes
+      - Get us a synopsis of the film Stripes
+      - Get a description of the flick Stripes
+      - Get me a description of the flick Stripes
+      - Get us a description of the flick Stripes
+      - Get a synopsis of the flick Stripes
+      - Get me a synopsis of the flick Stripes
+      - Get us a synopsis of the flick Stripes
+  movie.genres.intent:
+      - What genres does the movie Stripes belong to
+      - What genre does the movie Stripes belong to
+      - What genres does the film Stripes belong to
+      - What genre does the film Stripes belong to
+      - What genres does the flick Stripes belong to
+      - What genre does the flick Stripes belong to
+      - What are the genres of the movie Stripes
+      - What are the genre of the movie Stripes
+      - What are the genres of the film Stripes
+      - What are the genre of the film Stripes
+      - What are the genres of the flick Stripes
+      - What are the genre of the flick Stripes
+      - What genres is the movie Stripes
+      - What genre is the movie Stripes
+      - What genres are the movie Stripes
+      - What genre are the movie Stripes
+      - What genres is the film Stripes
+      - What genre is the film Stripes
+      - What genres are the film Stripes
+      - What genre are the film Stripes
+      - What genres is the flick Stripes
+      - What genre is the flick Stripes
+      - What genres are the flick Stripes
+      - What genre are the flick Stripes
+  movie.information.intent:
+    - Find information on the movie Stripes
+    - Get information on the movie Stripes
+    - Look for information on the movie Stripes
+    - Is there information on the movie Stripes
+    - Find info on the movie Stripes
+    - Get info on the movie Stripes
+    - Look for info on the movie Stripes
+    - Is there info on the movie Stripes
+    - Find information about the movie Stripes
+    - Get information about the movie Stripes
+    - Look for information about the movie Stripes
+    - Is there information about the movie Stripes
+    - Find info about the movie Stripes
+    - Get info about the movie Stripes
+    - Look for info about the movie Stripes
+    - Is there info about the movie Stripes
+    - Find information on the film Stripes
+    - Get information on the film Stripes
+    - Look for information on the film Stripes
+    - Is there information on the film Stripes
+    - Find info on the film Stripes
+    - Get info on the film Stripes
+    - Look for info on the film Stripes
+    - Is there info on the film Stripes
+    - Find information about the film Stripes
+    - Get information about the film Stripes
+    - Look for information about the film Stripes
+    - Is there information about the film Stripes
+    - Find info about the film Stripes
+    - Get info about the film Stripes
+    - Look for info about the film Stripes
+    - Is there info about the film Stripes
+    - Find information on the flick Stripes
+    - Get information on the flick Stripes
+    - Look for information on the flick Stripes
+    - Is there information on the flick Stripes
+    - Find info on the flick Stripes
+    - Get info on the flick Stripes
+    - Look for info on the flick Stripes
+    - Is there info on the flick Stripes
+    - Find information about the flick Stripes
+    - Get information about the flick Stripes
+    - Look for information about the flick Stripes
+    - Is there information about the flick Stripes
+    - Find info about the flick Stripes
+    - Get info about the flick Stripes
+    - Look for info about the flick Stripes
+    - Is there info about the flick Stripes
+    - Give information on the movie Stripes
+    - Tell information on the movie Stripes
+    - Get information on the movie Stripes
+    - Give me information on the movie Stripes
+    - Tell me information on the movie Stripes
+    - Get me information on the movie Stripes
+    - Give us information on the movie Stripes
+    - Tell us information on the movie Stripes
+    - Get us information on the movie Stripes
+    - Give info on the movie Stripes
+    - Tell info on the movie Stripes
+    - Get info on the movie Stripes
+    - Give me info on the movie Stripes
+    - Tell me info on the movie Stripes
+    - Get me info on the movie Stripes
+    - Give us info on the movie Stripes
+    - Tell us info on the movie Stripes
+    - Get us info on the movie Stripes
+    - Give information about the movie Stripes
+    - Tell information about the movie Stripes
+    - Get information about the movie Stripes
+    - Give me information about the movie Stripes
+    - Tell me information about the movie Stripes
+    - Get me information about the movie Stripes
+    - Give us information about the movie Stripes
+    - Tell us information about the movie Stripes
+    - Get us information about the movie Stripes
+    - Give info about the movie Stripes
+    - Tell info about the movie Stripes
+    - Get info about the movie Stripes
+    - Give me info about the movie Stripes
+    - Tell me info about the movie Stripes
+    - Get me info about the movie Stripes
+    - Give us info about the movie Stripes
+    - Tell us info about the movie Stripes
+    - Get us info about the movie Stripes
+    - Give information on the film Stripes
+    - Tell information on the film Stripes
+    - Get information on the film Stripes
+    - Give me information on the film Stripes
+    - Tell me information on the film Stripes
+    - Get me information on the film Stripes
+    - Give us information on the film Stripes
+    - Tell us information on the film Stripes
+    - Get us information on the film Stripes
+    - Give info on the film Stripes
+    - Tell info on the film Stripes
+    - Get info on the film Stripes
+    - Give me info on the film Stripes
+    - Tell me info on the film Stripes
+    - Get me info on the film Stripes
+    - Give us info on the film Stripes
+    - Tell us info on the film Stripes
+    - Get us info on the film Stripes
+    - Give information about the film Stripes
+    - Tell information about the film Stripes
+    - Get information about the film Stripes
+    - Give me information about the film Stripes
+    - Tell me information about the film Stripes
+    - Get me information about the film Stripes
+    - Give us information about the film Stripes
+    - Tell us information about the film Stripes
+    - Get us information about the film Stripes
+    - Give info about the film Stripes
+    - Tell info about the film Stripes
+    - Get info about the film Stripes
+    - Give me info about the film Stripes
+    - Tell me info about the film Stripes
+    - Get me info about the film Stripes
+    - Give us info about the film Stripes
+    - Tell us info about the film Stripes
+    - Get us info about the film Stripes
+    - Give information on the flick Stripes
+    - Tell information on the flick Stripes
+    - Get information on the flick Stripes
+    - Give me information on the flick Stripes
+    - Tell me information on the flick Stripes
+    - Get me information on the flick Stripes
+    - Give us information on the flick Stripes
+    - Tell us information on the flick Stripes
+    - Get us information on the flick Stripes
+    - Give info on the flick Stripes
+    - Tell info on the flick Stripes
+    - Get info on the flick Stripes
+    - Give me info on the flick Stripes
+    - Tell me info on the flick Stripes
+    - Get me info on the flick Stripes
+    - Give us info on the flick Stripes
+    - Tell us info on the flick Stripes
+    - Get us info on the flick Stripes
+    - Give information about the flick Stripes
+    - Tell information about the flick Stripes
+    - Get information about the flick Stripes
+    - Give me information about the flick Stripes
+    - Tell me information about the flick Stripes
+    - Get me information about the flick Stripes
+    - Give us information about the flick Stripes
+    - Tell us information about the flick Stripes
+    - Get us information about the flick Stripes
+    - Give info about the flick Stripes
+    - Tell info about the flick Stripes
+    - Get info about the flick Stripes
+    - Give me info about the flick Stripes
+    - Tell me info about the flick Stripes
+    - Get me info about the flick Stripes
+    - Give us info about the flick Stripes
+    - Tell us info about the flick Stripes
+    - Get us info about the flick Stripes
+    - Do you have information on the movie Stripes
+    - Can you get information on the movie Stripes
+    - Do you have info on the movie Stripes
+    - Can you get info on the movie Stripes
+    - Do you have information about the movie Stripes
+    - Can you get information about the movie Stripes
+    - Do you have info about the movie Stripes
+    - Can you get info about the movie Stripes
+    - Do you have information on the film Stripes
+    - Can you get information on the film Stripes
+    - Do you have info on the film Stripes
+    - Can you get info on the film Stripes
+    - Do you have information about the film Stripes
+    - Can you get information about the film Stripes
+    - Do you have info about the film Stripes
+    - Can you get info about the film Stripes
+    - Do you have information on the flick Stripes
+    - Can you get information on the flick Stripes
+    - Do you have info on the flick Stripes
+    - Can you get info on the flick Stripes
+    - Do you have information about the flick Stripes
+    - Can you get information about the flick Stripes
+    - Do you have info about the flick Stripes
+    - Can you get info about the flick Stripes
+  movie.popular.intent:
+    - List popular movies
+    - Search popular movies
+    - Search for popular movies
+    - Look for popular movies
+    - List popular films
+    - Search popular films
+    - Search for popular films
+    - Look for popular films
+    - List popular flicks
+    - Search popular flicks
+    - Search for popular flicks
+    - Look for popular flicks
+    - What are popular movies playing
+    - What are the popular movies playing
+    - What are popular movies playing
+    - What are the popular movies playing
+    - What are popular films playing
+    - What are the popular films playing
+    - What are popular films playing
+    - What are the popular films playing
+    - What are popular flicks playing
+    - What are the popular flicks playing
+    - What are popular flicks playing
+    - What are the popular flicks playing
+    - What are popular movies out
+    - What are the popular movies out
+    - What are popular movies out
+    - What are the popular movies out
+    - What are popular films out
+    - What are the popular films out
+    - What are popular films out
+    - What are the popular films out
+    - What are popular flicks out
+    - What are the popular flicks out
+    - What are popular flicks out
+    - What are the popular flicks out
+    - What are popular movies playing now
+    - What are the popular movies playing now
+    - What are popular movies playing now
+    - What are the popular movies playing now
+    - What are popular films playing now
+    - What are the popular films playing now
+    - What are popular films playing now
+    - What are the popular films playing now
+    - What are popular flicks playing now
+    - What are the popular flicks playing now
+    - What are popular flicks playing now
+    - What are the popular flicks playing now
+    - What are popular movies out
+    - What are the popular movies out
+    - What are popular movies out
+    - What are the popular movies out
+    - What are popular films out
+    - What are the popular films out
+    - What are popular films out
+    - What are the popular films out
+    - What are popular flicks out
+    - What are the popular flicks out
+    - What are popular flicks out
+    - What are the popular flicks out
+  movie.recommendations.intent:
+    - Recommend movies similar to Stripes
+    - Recommend films similar to Stripes
+    - Recommend flicks similar to Stripes
+    - Recommend movies like Stripes
+    - Recommend films like Stripes
+    - Recommend flicks like Stripes
+    - What movies would you recommend similar to Stripes
+    - What films would you recommend similar to Stripes
+    - What flicks would you recommend similar to Stripes
+    - What movies do you recommend similar to Stripes
+    - What films do you recommend similar to Stripes
+    - What flicks do you recommend similar to Stripes
+    - What movies would you recommend like Stripes
+    - What films would you recommend like Stripes
+    - What flicks would you recommend like Stripes
+    - What movies do you recommend like Stripes
+    - What films do you recommend like Stripes
+    - What flicks do you recommend like Stripes
+    - List movies similar to Stripes
+    - Get movies similar to Stripes
+    - List good movies similar to Stripes
+    - Get good movies similar to Stripes
+    - List movies like Stripes
+    - Get movies like Stripes
+    - List good movies like Stripes
+    - Get good movies like Stripes
+    - List films similar to Stripes
+    - Get films similar to Stripes
+    - List good films similar to Stripes
+    - Get good films similar to Stripes
+    - List films like Stripes
+    - Get films like Stripes
+    - List good films like Stripes
+    - Get good films like Stripes
+    - List flicks similar to Stripes
+    - Get flicks similar to Stripes
+    - List good flicks similar to Stripes
+    - Get good flicks similar to Stripes
+    - List flicks like Stripes
+    - Get flicks like Stripes
+    - List good flicks like Stripes
+    - Get good flicks like Stripes
+  movie.runtime.intent:
+    - How long is the movie Stripes
+    - How long is the film Stripes
+    - How long is the flick Stripes
+    - What is the runtime of the movie Stripes
+    - What is the length of the movie Stripes
+    - What is the runtime of the film Stripes
+    - What is the length of the film Stripes
+    - What is the runtime of the flick Stripes
+    - What is the length of the flick Stripes
+    - Get the runtime of the movie Stripes
+    - Get the length of the movie Stripes
+    - Get the runtime of the film Stripes
+    - Get the length of the film Stripes
+    - Get the runtime of the flick Stripes
+    - Get the length of the flick Stripes
+  movie.top.intent:
+    - List the top movies playing
+    - What are the top movies playing
+    - Search for the top movies playing
+    - List the most popular movies playing
+    - What are the most popular movies playing
+    - Search for the most popular movies playing
+    - List the highest rated movies playing
+    - What are the highest rated movies playing
+    - Search for the highest rated movies playing
+    - List the top films playing
+    - What are the top films playing
+    - Search for the top films playing
+    - List the most popular films playing
+    - What are the most popular films playing
+    - Search for the most popular films playing
+    - List the highest rated films playing
+    - What are the highest rated films playing
+    - Search for the highest rated films playing
+    - List the top flicks playing
+    - What are the top flicks playing
+    - Search for the top flicks playing
+    - List the most popular flicks playing
+    - What are the most popular flicks playing
+    - Search for the most popular flicks playing
+    - List the highest rated flicks playing
+    - What are the highest rated flicks playing
+    - Search for the highest rated flicks playing
+    - List the top movies out
+    - What are the top movies out
+    - Search for the top movies out
+    - List the most popular movies out
+    - What are the most popular movies out
+    - Search for the most popular movies out
+    - List the highest rated movies out
+    - What are the highest rated movies out
+    - Search for the highest rated movies out
+    - List the top films out
+    - What are the top films out
+    - Search for the top films out
+    - List the most popular films out
+    - What are the most popular films out
+    - Search for the most popular films out
+    - List the highest rated films out
+    - What are the highest rated films out
+    - Search for the highest rated films out
+    - List the top flicks out
+    - What are the top flicks out
+    - Search for the top flicks out
+    - List the most popular flicks out
+    - What are the most popular flicks out
+    - Search for the most popular flicks out
+    - List the highest rated flicks out
+    - What are the highest rated flicks out
+    - Search for the highest rated flicks out
+    - List the top movies playing now
+    - What are the top movies playing now
+    - Search for the top movies playing now
+    - List the most popular movies playing now
+    - What are the most popular movies playing now
+    - Search for the most popular movies playing now
+    - List the highest rated movies playing now
+    - What are the highest rated movies playing now
+    - Search for the highest rated movies playing now
+    - List the top films playing now
+    - What are the top films playing now
+    - Search for the top films playing now
+    - List the most popular films playing now
+    - What are the most popular films playing now
+    - Search for the most popular films playing now
+    - List the highest rated films playing now
+    - What are the highest rated films playing now
+    - Search for the highest rated films playing now
+    - List the top flicks playing now
+    - What are the top flicks playing now
+    - Search for the top flicks playing now
+    - List the most popular flicks playing now
+    - What are the most popular flicks playing now
+    - Search for the most popular flicks playing now
+    - List the highest rated flicks playing now
+    - What are the highest rated flicks playing now
+    - Search for the highest rated flicks playing now
+    - List the top movies out now
+    - What are the top movies out now
+    - Search for the top movies out now
+    - List the most popular movies out now
+    - What are the most popular movies out now
+    - Search for the most popular movies out now
+    - List the highest rated movies out now
+    - What are the highest rated movies out now
+    - Search for the highest rated movies out now
+    - List the top films out now
+    - What are the top films out now
+    - Search for the top films out now
+    - List the most popular films out now
+    - What are the most popular films out now
+    - Search for the most popular films out now
+    - List the highest rated films out now
+    - What are the highest rated films out now
+    - Search for the highest rated films out now
+    - List the top flicks out now
+    - What are the top flicks out now
+    - Search for the top flicks out now
+    - List the most popular flicks out now
+    - What are the most popular flicks out now
+    - Search for the most popular flicks out now
+    - List the highest rated flicks out now
+    - What are the highest rated flicks out now
+    - Search for the highest rated flicks out now
+  movie.year.intent:
+    - What year was the movie Stripes made
+    - When was the movie Stripes made
+    - What date was the movie stripes made
+    - What year was the film Stripes made
+    - When was the film Stripes made
+    - What date was the film stripes made
+    - What year was the flick Stripes made
+    - When was the flick Stripes made
+    - What date was the flick stripes made
+    - What year was the movie Stripes released
+    - When was the movie Stripes released
+    - What date was the movie stripes released
+    - What year was the film Stripes released
+    - When was the film Stripes released
+    - What date was the film stripes released
+    - What year was the flick Stripes released
+    - When was the flick Stripes released
+    - What date was the flick stripes released

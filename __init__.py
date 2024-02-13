@@ -37,7 +37,6 @@ class MovieMaster(OVOSSkill):
             "match_confidence": self.settings.get("match_confidence", 0.8)
             }
         self.settings.merge(DEFAULT_SETTINGS, new_only=False)
-        LOG.debug(self.settings)
 
         self._api_key = self.verify_api(self.settings.get("apiv3"))
         self._search_depth = self.settings.get("search_depth")

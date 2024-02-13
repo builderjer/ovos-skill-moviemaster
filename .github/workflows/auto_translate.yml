@@ -1,55 +1,12 @@
 name: Auto translate
 on:
-  workflow_call:
-    inputs:
-      branch:
-        description: 'The branch to checkout and run the action in'
-        type: string
-        default: ${{ github.ref }}
-      action_branch:
-        description: 'The shared action branch to checkout'
-        type: string
-        default: main
-      python_version:
-        description: 'The python version to use'
-        type: string
-        default: "3.8"
-      locale_folder:
-        description: 'The base folder to look for localization files'
-        type: string
-        default: locale
-      
+  workflow_dispatch:
 
 jobs:
   autotranslate:
-    env:
-      API_KEY: ${{secrets.DL_API_KEY}}
-      LOCALE_FOLDER: ${{ github.workspace }}/action/package/${{ inputs.locale_folder }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ inputs.branch }}
-          path: action/package/
-      - name: Checkout Scripts Repo
-        uses: actions/checkout@v4
-        with:
-          repository: OpenVoiceOS/.github
-          ref: ${{ inputs.action_branch }}
-          path: action/github/
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: ${{ inputs.python_version }}
-      - name: Install Translate Tools
-        run: |
-          python -m pip install -r action/github/requirements/pip_translation.txt
-      - name: Auto Translate
-        run: |
-          python action/github/scripts/translate.py
-      - name: Commit to dev
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: autotranslate
-          repository: action/package/
+    uses: openvoiceos/.github/.github/workflows/auto_translate.yml@feat/shared_actions1
+    with:
+      branch: dev
+      action_branch: feat/shared_actions1
+      python_version: "3.10"
+      locale_folder: locale
