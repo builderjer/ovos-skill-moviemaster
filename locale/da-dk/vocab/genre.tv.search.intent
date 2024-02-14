@@ -1,2 +1,0 @@
-(list | find) (tv-shows | fjernsynsprogrammer | programmer) der er (en |) {genre}
-(list | find) {genre} (tv-shows | fjernsnsprogrammer | programmer)
