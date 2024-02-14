@@ -30,10 +30,16 @@ en-us:
         - Find films that are a comedy
         - List films that are comedy
         - Find films that are comedy
+        - List flicks that are a comedy
+        - Find flicks that are a comedy
+        - List flicks that are comedy
+        - Find flicks that are comedy
         - List comedy movies
         - List comedy films
+        - List comedy flicks
         - Find comedy movies
         - Find comedy films
+        - Find comedy flicks
     movie.cast.intent:
         - Who acts in the movie Stripes
         - Who plays in the movie Stripes
