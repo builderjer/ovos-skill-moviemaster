@@ -21,7 +21,7 @@ dialog:
   - no.valid.api
 intents:
   padatious:
-    - genre.movie.search.intent
+    # - movie.genre.search.intent
     - movie.cast.intent
     - movie.description.intent
     - movie.genres.intent
