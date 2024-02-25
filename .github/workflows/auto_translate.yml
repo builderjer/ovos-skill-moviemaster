@@ -1,5 +1,6 @@
 name: Auto translate
 on:
+
   workflow_dispatch:
 
 jobs:

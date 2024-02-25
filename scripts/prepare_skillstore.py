@@ -36,7 +36,6 @@ skill_code = os.path.join(BASE_FOLDER, "__init__.py")
 
 res_folder = os.path.join(BASE_FOLDER, "locale", "en-us")
 
-
 def read_samples(path):
     samples = []
     with open(path) as fi:
