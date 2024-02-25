@@ -3,7 +3,7 @@ import os
 from setuptools import setup
 from os import getenv, walk, path
 
-URL = "https://github.com/builderjer/ovos-skill-moviemaster"
+URL = "https://github.com/OpenVoiceOS/ovos-skill-moviemaster"
 SKILL_CLAZZ = "MovieMaster"  # needs to match __init__.py class name
 PYPI_NAME = "ovos-skill-moviemaster"  # pip install PYPI_NAME
 
@@ -81,7 +81,7 @@ setup(
     install_requires=get_requirements("requirements.txt"),
     author=SKILL_AUTHOR,
     description='OVOS hello world skill plugin',
-    author_email='jarbasai@mailfence.com',
+    author_email='builderjer@gmail.com',
     license='Apache-2.0',
     package_dir={SKILL_PKG: ""},
     package_data={SKILL_PKG: find_resource_files()},
