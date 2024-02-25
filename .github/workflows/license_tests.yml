@@ -1,97 +1,13 @@
-name: License Tests
+
+name: License tests
 on:
-  workflow_call:
-    inputs:
-      runner:
-        description: 'Runner to use'
-        type: string
-        default: 'ubuntu-latest'
-      branch:
-        description: 'Branch to check out'
-        type: string
-        default: ${{ github.ref }}
-      action_branch:
-        description: 'The shared action branch to checkout'
-        type: string
-        default: main
-      python_version:
-        description: 'Python version to use'
-        type: string
-        default: '3.8'
-      system_deps:
-        description: 'Additional system dependencies (whitespace delimited) to install'
-        required: false
-        type: string
-      pip_packages:
-        description: 'Additional Python packages (whitespace delimited) to install'
-        type: string
-        required: false
-      install_extras:
-        description: 'Optional extras to install the python package with'
-        required: false
-        type: string
-      packages-exclude:
-        description: 'Regex to exclude packages from the license check'
-        type: string
-        default: '^(precise-runner|fann2|tqdm|bs4|nvidia|bitstruct).*'
-      licenses-exclude:
-        description: 'Regex to exclude licenses from the license check'
-        type: string
-        default: '^(Mozilla).*$'
+  workflow_dispatch:
+  push:
+
 jobs:
-  license_tests:
-    timeout-minutes: 15
-    runs-on: ${{ inputs.runner }}
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ inputs.branch }}
-          path: action/package/
-      - name: Checkout Scripts Repo
-        uses: actions/checkout@v4
-        with:
-          path: action/github/
-          ref: ${{ inputs.action_branch }}
-          repository: OpenVoiceOS/.github
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: ${{ inputs.python_version }}
-      - name: Install Custom System Dependencies
-        if: ${{ inputs.system_deps != null }}
-        run: |
-          sudo apt update
-          sudo apt install -y ${{ inputs.system_deps }}
-      - name: upgrade pip
-        run: |
-          pip install --upgrade pip
-      - name: Install Custom Python Requirements
-        if: ${{ inputs.pip_packages != null }}
-        run: |
-          pip install ${{ inputs.pip_packages }}
-      - name: Install repo
-        run: |
-          cd ${{ github.workspace }}/action/package
-          if [ -z ${{ inputs.install_extras }} ]; then
-            pip install .
-          else
-            pip install .[${{ inputs.install_extras }}]
-          fi
-      - name: Get explicit and transitive dependencies
-        run: |
-          pip freeze > requirements-all.txt
-      - name: Check licenses
-        id: license_check_report
-        uses: pilosus/action-pip-license-checker@v2
-        with:
-          requirements: 'requirements-all.txt'
-          fail: 'Copyleft,Other,Error'
-          fails-only: true
-          pre: true
-          verbose: 2
-          exclude: ${{ inputs.packages-exclude }}
-          exclude-license: ${{ inputs.licenses-exclude }}
-      - name: Print report
-        if: ${{ always() }}
-        run: echo "${{ steps.license_check_report.outputs.report }}"
+  license:
+    uses: openvoiceos/.github/.github/workflows/license_tests.yml@feat/shared_actions1
+    with:
+      branch: ${{ github.head_ref }}
+      action_branch: feat/shared_actions1
+      python_version: 3.10

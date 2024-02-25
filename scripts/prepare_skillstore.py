@@ -10,7 +10,7 @@ if not branch:
 repo = os.getenv("REPO")
 if not repo:
     raise ValueError("environment variable `REPO` not set")
-author = "builderjer"
+author = "OpenVoiceOS"
 
 url = f"https://github.com/{author}/{repo}@{branch}"
 

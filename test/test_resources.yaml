@@ -1,0 +1,36 @@
+languages:
+  - "en-us"
+dialog:
+  - bad.movie.genre.catagory
+  - fallback.api
+  - genre.movie.search
+  - movie.cast
+  - movie.description
+  - movie.description.error
+  - movie.genre.multiple
+  - movie.genre.single
+  - movie.info.response
+  - movie.popular
+  - movie.recommendations
+  - movie.runtime
+  - movie.top
+  - movie.year
+  - movie.year.error
+  - no.api
+  - no.info
+  - no.valid.api
+intents:
+  padatious:
+    # - movie.genre.search.intent
+    - movie.cast.intent
+    - movie.description.intent
+    - movie.genres.intent
+    # - movie.information.intent
+    - movie.popular.intent
+    - movie.recommendations.intent
+    - movie.runtime.intent
+    - movie.top.intent
+    - movie.year.intent
+  adapt: []
+vocab: []
+regex: []
