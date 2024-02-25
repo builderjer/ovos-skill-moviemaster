@@ -5,3 +5,4 @@ recursive-include res *
 recursive-include ui *
 include *.json
 include *.txt
+include *.png
