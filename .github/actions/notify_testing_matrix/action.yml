@@ -1,0 +1,28 @@
+name: 'Notify Matrix Chat'
+description: 'Send a message to a Matrix chat room'
+inputs:
+  matrix_token:
+    description: 'The token to use to authenticate with the Matrix server'
+    required: true
+  subject:
+    description: 'Subject of the message'
+    default: 'no subject'
+  release_type:
+    description: 'Type of the release'
+    required: true
+  version:
+    description: 'The version of the release'
+    default: "version unknown"
+  repository:
+    description: 'The repository that triggered the action'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Send message to Matrix
+      uses: fadenb/matrix-chat-message@v0.0.6
+      with:
+        homeserver: 'matrix.org'
+        token: ${{ inputs.matrix_token }}
+        channel: '!WjxEKjjINpyBRPFgxl:krbel.duckdns.org'
+        message: "Testing QA phase in repo ${{ inputs.repository }} of a ${{ inputs.release_type }} release (${{ inputs.version }}) started. Subject to test: ${{ inputs.subject }}"

@@ -10,6 +10,7 @@ VERSION_FILE = os.getenv("VERSION_FILE")
 if not os.path.isfile(VERSION_FILE):
     raise ValueError(f"environment variable `VERSION_FILE` is not a file: {VERSION_FILE}")
 
+
 def get_version():
     """ Find the version of the package"""
     major, minor, build, alpha = (None, None, None, None)
@@ -31,6 +32,7 @@ def get_version():
     if alpha and int(alpha) > 0:
         version += f"a{alpha}"
     return version
+
 
 desktop_dir = os.path.join(BASE_FOLDER, "res", "desktop")
 jsonf = os.path.join(desktop_dir, "skill.json")

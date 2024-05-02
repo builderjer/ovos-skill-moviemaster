@@ -1,0 +1,30 @@
+name: Notify Matrix Chat
+
+# only triggers on pull request closed events
+on:
+  workflow_call:
+    inputs:
+      pr_id:
+        type: number
+        required: true
+      subject:
+        type: string
+        default: ''
+
+jobs:
+  notify_pr_matrix:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get repo
+        run: |
+          echo REPO=$(echo ${{ github.repository}} | cut -d '/' -f 2) >> $GITHUB_ENV
+      - uses: actions/checkout@v4
+      - name: Send message to Matrix bots channel
+        id: matrix-chat-message
+        uses: fadenb/matrix-chat-message@v0.0.6
+        with:
+          homeserver: 'matrix.org'
+          token: ${{ secrets.MATRIX_TOKEN }}
+          channel: '!WjxEKjjINpyBRPFgxl:krbel.duckdns.org'
+          message: |
+            ${{ inputs.subject }} PR merged! (${{ env.REPO }}) [PR](https://github.com/${{ github.repository }}/pull/${{ inputs.pr_id }})

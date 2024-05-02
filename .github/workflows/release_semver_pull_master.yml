@@ -1,0 +1,102 @@
+name: Declare Stable Release (Proposal)
+on:
+  workflow_call:
+    inputs:
+      action_branch:
+        description: 'The shared action branch to checkout'
+        type: string
+        default: main
+      python_version:
+        description: 'The python version to use'
+        type: string
+        default: "3.8"
+      changelog_file:
+        type: string
+        description: 'The file to write the changelog to'
+        default: CHANGELOG.md  
+
+jobs:
+  propose_stable_release:
+    runs-on: ubuntu-latest
+    env:
+      TARGET_BRANCH: 'master'
+      PCCC_CONFIG_FILE: ${{ github.workspace }}/action/github/pccc.toml
+      GIT_CLIFF_CONFIG: ${{ github.workspace }}/action/github/cliff.toml
+      GIT_CLIFF_WORKDIR: ${{ github.workspace }}/action/package/
+      GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+      GITHUB_REPO: ${{ github.repository }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT }}
+          ref: testing
+          fetch-depth: 0
+          path: action/package/
+      - name: Checkout Scripts Repo
+        uses: actions/checkout@v4
+        with:
+          repository: OpenVoiceOS/.github
+          ref: ${{ inputs.action_branch }}
+          path: action/github/
+      - name: Install Common System Dependencies
+        run: |
+          sudo apt update
+          xargs sudo apt install -y < ${{ github.workspace }}/action/github/requirements/sys_deb_common_deps.txt
+      - name: Authenticate GitHub CLI
+        run: |
+          unset GITHUB_TOKEN
+          echo "${{ secrets.GH_PAT }}" | gh auth login --with-token
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{inputs.python_version}}
+      - name: Install Python Dependencies
+        run: |
+          pip install -r ${{ github.workspace }}/action/github/requirements/pip_base.txt
+      - name: Get Release Version
+        run: |
+          RELEASE_VERSION=$(python ${{ github.workspace }}/action/package/setup.py --version)
+          echo "RELEASE_VERSION=${RELEASE_VERSION}" >> $GITHUB_ENV
+      - name: Parse Release Type
+        run: |
+          RELEASE_TYPE=$(python ${{ github.workspace }}/action/github/scripts/parse_semver_release.py)
+          echo "RELEASE_TYPE=${RELEASE_TYPE}" >> $GITHUB_ENV
+      - name: Check Latest Release
+        run: |
+          LATEST_RELEASE=$(python ${{ github.workspace }}/action/github/scripts/semver_release_version.py --latest --type ${{ env.RELEASE_TYPE }}) 
+          echo "LATEST_RELEASE=${LATEST_RELEASE}" >> $GITHUB_ENV
+      - name: Create Release Changelog (Proposal)
+        id: release_changelog
+        run: |
+          cd ${{ github.workspace }}/action/package/
+          python ${{ github.workspace }}/action/github/scripts/changelog_postprocess.py --since ${{ env.LATEST_RELEASE }}
+        env:
+          GIT_CLIFF_TAG: ${{ env.RELEASE_VERSION }}
+      - name: Create Master Branch (if necessary)
+        run: |
+            cd ${{ github.workspace }}/action/package/
+            git fetch origin dev:dev
+            TARGET_BRANCH_EXISTS=$(git ls-remote --heads origin ${{ env.TARGET_BRANCH }} | wc -l)
+            INITIAL_COMMIT=$(git rev-list --max-parents=0 dev)
+            if [ "$TARGET_BRANCH_EXISTS" -eq "0" ]; then
+              if [ ${{ env.LATEST_RELEASE }} == "0.0.0" ]; then
+                git checkout -b ${{ env.TARGET_BRANCH }} $INITIAL_COMMIT
+              else
+                git checkout -b ${{ env.TARGET_BRANCH }} tags/${{ env.LATEST_RELEASE }}
+              fi            
+              git push origin ${{ env.TARGET_BRANCH }} --force
+            fi
+      - name: Create Pull Request to ${{ env.TARGET_BRANCH }}
+        run: |
+          cd ${{ github.workspace }}/action/package/
+          gh pr create \
+          --title "ci(release): declare ${{ env.RELEASE_TYPE }} release stable (${{ env.RELEASE_VERSION }})" \
+          --body "$(cat << EOF
+            Included changes:
+            ${{ steps.release_changelog.outputs.changelog }}
+          EOF
+          )" \
+          --base ${{ env.TARGET_BRANCH }} \
+          --head testing \
+          --assignee ${{ github.actor }}

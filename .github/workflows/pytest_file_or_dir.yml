@@ -141,7 +141,7 @@ jobs:
         with:
           name: coverage_${{ github.repository_id }}
           path: ${{ github.workspace }}/action/package/
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.GH_PAT }}
       - name: Test package with ${{ matrix.python-version }}
         run: |
           cd ${{ github.workspace }}/action/package/
