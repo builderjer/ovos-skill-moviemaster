@@ -1,0 +1,404 @@
+name: Kickoff Testing Release
+on:
+  workflow_call:
+    inputs:
+      branch:
+        type: string
+        default: dev
+      action_branch:
+        description: 'The shared action branch to checkout'
+        type: string
+        default: main
+      python_version:
+        description: 'The python version to use'
+        type: string
+        default: "3.8"
+      version_file:
+        description: 'The file location to read the version from'
+        type: string
+        default: version.py
+      release_type:
+        type: string
+        description: 'The type of release to make'
+      subject:
+        type: string
+        description: 'Subject title of the push/pull request event to parse the release type.'
+        required: false
+      locale_folder:
+        type: string
+        description: 'The folder location of the locale files'
+        required: false
+      update_intentfile:
+        type: string
+        description: 'The file location of the intent test file to update'
+        required: false
+      changelog_file:
+        type: string
+        description: 'The file location of the changelog'
+        default: CHANGELOG.md
+
+jobs:
+  parse_conventional_commits:
+    outputs:
+      release_type: ${{ steps.parse.outputs.release_type }}
+    runs-on: ubuntu-latest
+    env:
+      PCCC_CONFIG_FILE: ${{ github.workspace }}/action/github/pccc.toml
+    steps:
+      - name: Checkout Package Repo
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.branch }}
+          path: action/package/
+          fetch-depth: 0
+      - name: Checkout Scripts Repo
+        uses: actions/checkout@v4
+        with:
+          repository: OpenVoiceOS/.github
+          ref: ${{ inputs.action_branch }}
+          path: action/github/
+      - name: Set up python ${{ inputs.python_version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ inputs.python_version }}
+      - name: Install Common System Dependencies
+        run: |
+          sudo apt update
+          xargs sudo apt install -y < ${{ github.workspace }}/action/github/requirements/sys_deb_common_deps.txt
+      - name: Install Common Python Requirements
+        run: |
+          pip install -r ${{ github.workspace }}/action/github/requirements/pip_base.txt
+      - name: Parse Conventional Commits
+        id: parse
+        run: |
+          export TITLE="${{ inputs.subject }}"
+          cd ${{ github.workspace }}/action/github
+          RELEASE_TYPE=$(python scripts/parse_semver_release.py)
+          echo "release_type=$RELEASE_TYPE" >> $GITHUB_OUTPUT
+  autotranslate:
+    needs: parse_conventional_commits
+    runs-on: ubuntu-latest
+    outputs:
+      translated: ${{ steps.changes.outputs.translated }}
+    permissions:
+      contents: write
+    env:
+      API_KEY: ${{secrets.DL_API_KEY}} 
+      LOCALE_FOLDER: ${{ github.workspace }}/action/package/${{ inputs.locale_folder }}
+      INTENT_TEST_FILE: ${{ github.workspace }}/action/package/${{ inputs.update_intentfile }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref }}
+          path: action/package/
+      - name: Checkout Scripts Repo
+        uses: actions/checkout@v4
+        with:
+          repository: OpenVoiceOS/.github
+          ref: ${{ inputs.action_branch }}
+          path: action/github/
+      - uses: dorny/paths-filter@v2
+        if: ${{ inputs.locale_folder != '' }}
+        id: filter
+        with:
+          working-directory: action/package/
+          filters: |
+            us_specific:
+              - '${{ inputs.locale_folder }}/en-us/**'
+              - '${{ inputs.locale_folder }}/../dialog/en-us/**'
+              - '${{ inputs.locale_folder }}/../vocab/en-us/**'
+            general:
+              - '${{ inputs.locale_folder }}/**'
+              - '${{ inputs.locale_folder }}/../dialog/**'
+              - '${{ inputs.locale_folder }}/../vocab/**'
+      - name: Setup Python
+        if: steps.filter.outputs.general == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ inputs.python_version }}
+      - name: Install Python Requirements
+        if: steps.filter.outputs.general == 'true'
+        run: |
+          python -m pip install -r action/github/requirements/pip_translation.txt
+      - name: Pull latest changes
+        if: steps.filter.outputs.general == 'true'
+        run: |
+          git pull origin ${{ inputs.branch }}
+      - name: Auto Translate
+        if: steps.filter.outputs.general == 'true'
+        run: |
+          python action/github/scripts/translate.py
+      # 0 if no changes were made, 1 if changes were made
+      - name: changes made?
+        id: changes
+        run: |
+          cd ${{ github.workspace }}/action/package/
+          git diff --exit-code
+          echo "translated=$?" >> $GITHUB_OUTPUT
+      - name: Commit autotranslation to ${{ inputs.branch }}
+        if: steps.changes.outputs.translated == '1'
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "ci(localisation): autotranslate common languages"
+          repository: action/package/
+          branch: ${{ inputs.branch }}
+      - name: update resource test file
+        if: steps.changes.outputs.translated == '1' && inputs.update_intentfile != ''
+        run: |
+          python action/github/scripts/update_intent_testfile.py
+      - name: Commit resource test file changes to ${{ inputs.branch }}
+        if: steps.changes.outputs.translated == '1' && inputs.update_intentfile != ''
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "ci(localisation): update resource test file"
+          repository: action/package/
+          branch: ${{ inputs.branch }}
+  # alpha release (+ testing)
+  alpha_release:
+    needs: [parse_conventional_commits, autotranslate]
+    if: (contains(fromJson('["patch", "minor", "major", "alpha"]'), needs.parse_conventional_commits.outputs.release_type)) || (contains(fromJson('["patch", "minor", "major", "alpha"]'), inputs.release_type))
+    uses: openvoiceos/.github/.github/workflows/release_alpha.yml@feat/shared_actions1
+    secrets: inherit
+    with:
+      action_branch: ${{ inputs.action_branch }}
+      version_file: ${{ inputs.version_file }}
+      python_version: ${{ inputs.python_version }}
+      changelog_file: ${{ inputs.changelog_file }}
+  # >= patch release
+  kickoff_testing:
+    needs: [parse_conventional_commits, alpha_release, autotranslate]
+    if: (contains(fromJson('["patch", "minor", "major"]'), needs.parse_conventional_commits.outputs.release_type) || (inputs.release_type != 'alpha' && inputs.release_type != ''))
+    runs-on: ubuntu-latest
+    env:
+      TARGET_BRANCH: 'testing'
+      GITHUB_REPOSITORY: ${{ github.repository }}
+      GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+      VERSION_FILE: ${{ github.workspace}}/action/package/${{ inputs.version_file }}
+      RELEASE_TYPE: ${{ needs.parse_conventional_commits.outputs.release_type }}
+      GH_PAT: ${{ secrets.GH_PAT }}
+    steps:
+      - name: Checkout Package Repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT }}
+          ref: ${{ inputs.branch }}
+          path: action/package/
+          fetch-depth: 0
+      - name: Checkout Scripts Repo
+        uses: actions/checkout@v4
+        with:
+          repository: OpenVoiceOS/.github
+          ref: ${{ inputs.action_branch }}
+          path: action/github/
+      - name: Install Common System Dependencies
+        run: |
+          sudo apt update
+          xargs sudo apt install -y < ${{ github.workspace }}/action/github/requirements/sys_deb_common_deps.txt
+      - name: Authenticate GitHub CLI
+        run: |
+          unset GITHUB_TOKEN
+          echo "${{ secrets.GH_PAT }}" | gh auth login --with-token
+      - name: Set up python ${{ inputs.python_version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ inputs.python_version }}
+      - name: Install Common Python Requirements
+        run: |
+          pip install -r ${{ github.workspace }}/action/github/requirements/pip_base.txt
+      - name: Bump to next ${{ env.RELEASE_TYPE }} version
+        run: |
+          cd ${{ github.workspace }}/action/package/
+          git checkout ${{ inputs.branch }}
+          VERSION=$(python setup.py --version)
+          echo "VERSION=${VERSION}" >> $GITHUB_ENV
+          cd ${{ github.workspace }}/action/github/scripts/
+          NEXT_VERSION=$( python semver_release_version.py --next --file ${{ env.VERSION_FILE }} --type ${{ env.RELEASE_TYPE }} --save )
+          echo "NEXT_VERSION=${NEXT_VERSION}" >> $GITHUB_ENV
+      - name: Push Version Change (${{ env.VERSION }} -> ${{ env.NEXT_VERSION }})
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Increment Version to ${{ env.NEXT_VERSION }}
+          repository: action/package/
+      - name: Force Push dev to testing branch
+        run: |
+          cd ${{ github.workspace }}/action/package/
+          git push origin dev:testing --force
+      # set cached test status to active
+      - name: Set test status
+        run: |
+          cd ${{ github.workspace }}
+          echo "testing" > test-status
+      - name: Delete Test Tracking Cache
+        run: |
+          gh extension install actions/gh-actions-cache
+
+          echo "Fetching list of cache key"
+          cacheKeys=$(gh actions-cache list -R ${{ github.repository }} -L 100 | cut -f 1 )
+
+          ## Setting this to not fail the workflow while deleting cache keys.
+          set +e
+          echo "Deleting caches..."
+          for cacheKey in $cacheKeys
+          do
+              gh actions-cache delete $cacheKey -R ${{ github.repository }} --confirm
+          done
+          echo "Done"
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+      - name: Cache test status
+        uses: actions/cache@v2
+        with:
+          path: test-status
+          key: test-status-${{ runner.os }}
+      - name: Notify Matrix Room
+        uses: ./action/github/.github/actions/notify_testing_matrix
+        with:
+          matrix_token: ${{ secrets.MATRIX_TOKEN }}
+          subject: ${{ inputs.subject }}
+          release_type: ${{ env.RELEASE_TYPE }}
+          version: ${{ env.NEXT_VERSION }}
+          repository: ${{ github.repository }}
+  # testing release
+  # note: autotranslate as dependency requires the job running without restrictions!
+  cherry_pick_testing:
+    needs: [parse_conventional_commits, autotranslate]
+    if: ${{ needs.parse_conventional_commits.outputs.release_type == 'release' }}
+    env:
+      VERSION_FILE: ${{ github.workspace}}/action/package/${{ inputs.version_file }}
+      GIT_CLIFF_CONFIG: ${{ github.workspace }}/action/github/cliff.toml
+      GIT_CLIFF_WORKDIR: ${{ github.workspace }}/action/package/
+      GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+      GITHUB_REPO: ${{ github.repository }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT }}
+          fetch-depth: 0
+          ref: dev
+          path: action/package/
+      - name: Checkout Scripts Repo
+        uses: actions/checkout@v4
+        with:
+          repository: OpenVoiceOS/.github
+          ref: ${{ inputs.action_branch }}
+          path: action/github/
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ inputs.python_version }}
+      - name: Install Python Dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r ${{ github.workspace }}/action/github/requirements/pip_base.txt
+          pip install -r ${{ github.workspace }}/action/github/requirements/pip_build_tools.txt
+      - name: Versioning
+        run: |
+          cd ${{ github.workspace }}/action/package/
+          git checkout testing
+          TEST_VERSION=$(python setup.py --version)
+          echo "TEST_VERSION=${TEST_VERSION}" >> $GITHUB_ENV
+          PREVIOUS_VERSION=$(python ${{ github.workspace }}/action/github/scripts/semver_release_version.py --version "$TEST_VERSION" --latest)
+          NEXT_VERSION=$(python ${{ github.workspace }}/action/github/scripts/semver_release_version.py --version "$PREVIOUS_VERSION" --next --type alpha)
+          RELEASE_CYCLE_START=$( python ${{ github.workspace }}/action/github/scripts/semver_release_version.py --version "$TEST_VERSION" --latest --type patch)
+          echo "RELEASE_CYCLE_START=${RELEASE_CYCLE_START}" >> $GITHUB_ENV
+          echo "PREVIOUS_VERSION=${PREVIOUS_VERSION}" >> $GITHUB_ENV
+          echo "NEXT_VERSION=${NEXT_VERSION}" >> $GITHUB_ENV
+          git checkout dev
+      - name: Create Changelog
+        run: |
+          cd ${{ github.workspace }}/action/package/
+          python ${{ github.workspace }}/action/github/scripts/changelog_postprocess.py --since ${{ env.PREVIOUS_VERSION }}
+        env:
+          GIT_CLIFF_PREPEND: ${{ github.workspace }}/action/package/${{ inputs.changelog_file }}
+          GIT_CLIFF_TAG: ${{ env.NEXT_VERSION }}
+      - name: Commit Prerelease Changes (${{ env.PREVIOUS_VERSION }} -> ${{ env.NEXT_VERSION }})
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Prerelease Changes ${{ env.NEXT_VERSION }}
+          repository: action/package/
+      # based on the workflow run, set the number of commits to cherry pick
+      # note: merge commits are filtered
+      # note: COMMITS=2 (commit/merge commit + version bump)
+      - name: get commit shas to cherry pick
+        id: get_commit_sha
+        run: |
+          cd ${{ github.workspace }}/action/package/
+          if [ -f .git/shallow ]; then
+            git fetch --unshallow
+          fi
+          git checkout dev
+          COMMITS=2
+          if [ "${{ needs.autotranslate.outputs.translated }}" == "1" ]; then
+            COMMITS=$((COMMITS + 1))
+          fi
+          echo "Commit History (max. 10):"
+          echo "--------------"
+          git log --pretty=format:"%h %s" -s HEAD --max-count=10
+          echo -e "\n--------------"
+          COMMIT_SHA=$(git log -n "$COMMITS" --pretty=format:"%H" | awk '{a[i++]=$0} END {for (j=i-1; j>=0;) print a[j--] }' | tr '\n' ' ')
+          echo "Considerring $COMMITS commits to cherry pick: $COMMIT_SHA"
+          echo "COMMIT_SHA=${COMMIT_SHA}" >> $GITHUB_ENV
+      - name: Checkout At Tag And Cherry Pick
+        run: |
+          cd ${{ github.workspace }}/action/package/
+          git config user.name "EggmanBot"
+          git config user.email "openvoiceos@gmail.com"
+          git checkout -b temp-branch "tags/$PREVIOUS_VERSION"
+          IFS=' ' read -ra ADDR <<< "${{ env.COMMIT_SHA }}"
+          for i in "${ADDR[@]}"; do
+            PARENTS_COUNT=$(git cat-file -p $i | grep -c parent)
+            if [ $PARENTS_COUNT -gt 1 ]
+            then
+              git cherry-pick -m 1 --allow-empty $i
+            else
+              git cherry-pick --allow-empty $i
+            fi
+          done
+          CHERRYPICKED_SHA=$(git rev-parse HEAD)
+          echo "CHERRYPICKED_SHA=${CHERRYPICKED_SHA}" >> $GITHUB_ENV
+      - name: Push changes to testing branch
+        run: |
+          cd ${{ github.workspace }}/action/package/
+          git push --force origin temp-branch:testing
+      - name: Create Changelog
+        id: release_changelog
+        run: |
+          cd ${{ github.workspace }}/action/package/
+          python ${{ github.workspace }}/action/github/scripts/changelog_postprocess.py --since ${{ env.PREVIOUS_VERSION }}
+        env:
+          GIT_CLIFF_TAG: ${{ env.NEXT_VERSION }}
+      - name: (Re)Set and push Release Version
+        run: |
+          python ${{ github.workspace }}/action/github/scripts/semver_release_version.py --version ${{ env.TEST_VERSION }} --save ${{ env.VERSION_FILE }}
+          cd ${{ github.workspace }}/action/package/
+          git diff --exit-code || (git commit -am "Increment Version to ${{ env.TEST_VERSION }}" && git push origin temp-branch:testing)
+      # not globally bumped, only for the release
+      - name: Bump to next alpha version (for the release)
+        run: |
+          python ${{ github.workspace }}/action/github/scripts/semver_release_version.py --version ${{ env.NEXT_VERSION }} --save ${{ env.VERSION_FILE }}
+      - name: Create Pre-release
+        id: create_release
+        uses: ncipollo/release-action@v1
+        with:
+          token: ${{ secrets.GH_PAT }}
+          tag: ${{ env.NEXT_VERSION }}
+          name: Release ${{ env.NEXT_VERSION }}
+          body: |
+            Changes in this Release
+            ${{ steps.release_changelog.outputs.changelog }}
+          commit: ${{ env.CHERRYPICKED_SHA}}
+          prerelease: true
+      - name: Build Distribution Packages
+        run: |
+          mkdir -p ${{ github.workspace }}/action/dist
+          cd ${{ github.workspace }}/action/package/
+          python setup.py sdist bdist_wheel --dist-dir ${{ github.workspace }}/action/dist
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          password: ${{secrets.PYPI_TOKEN}}
+          packages-dir: action/dist/

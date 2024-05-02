@@ -1,0 +1,122 @@
+# This workflow will generate a distribution and upload it to PyPI
+
+name: Publish Alpha Build ...aX
+on:
+  workflow_call:
+    inputs:
+      action_branch:
+        description: 'The shared action branch to checkout'
+        type: string
+        default: main
+      version_file:
+        description: 'The file location to read the version from'
+        type: string
+        default: version.py
+      python_version:
+        description: 'The python version to use'
+        type: string
+        default: "3.8"
+      changelog_file:
+        description: 'The file location to write the changelog to'
+        type: string
+        default: CHANGELOG.md
+      # release type other than alpha would need some semver foo
+      release_type:
+          description: 'The type of release to make'
+          type: string
+          default: alpha
+      
+
+jobs:
+  build_and_publish:
+    runs-on: ubuntu-latest
+    env:
+      VERSION_FILE: ${{ github.workspace }}/action/package/${{ inputs.version_file }}
+      SOURCE_BRANCH: ${{ inputs.release_type == 'alpha' && 'dev' || 'testing' }}
+      GIT_CLIFF_CONFIG: ${{ github.workspace }}/action/github/cliff.toml
+      GIT_CLIFF_WORKDIR: ${{ github.workspace }}/action/package/
+      GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+      GITHUB_REPO: ${{ github.repository }}
+    steps:
+      - name: Checkout Scripts Repo
+        uses: actions/checkout@v4
+        with:
+          repository: OpenVoiceOS/.github
+          ref: ${{ inputs.action_branch }}
+          path: action/github/
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ inputs.python_version }}
+      - name: Install Python Dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r ${{ github.workspace }}/action/github/requirements/pip_base.txt
+          pip install -r ${{ github.workspace }}/action/github/requirements/pip_build_tools.txt
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT }}
+          ref: ${{ env.SOURCE_BRANCH }}
+          path: action/package/
+          fetch-depth: 0
+      # note: "bump-prelease" is a special operation, as it doesn't preserve order
+      # normally the next prerelease version of 0.3.0 would be 0.3.1-a.1
+      # so we bump the patch/minor/major version and then add the prerelease (0.3.0 -> 0.3.0-a.1)
+      - name: Increment Version
+        id: version
+        run: |
+          cd ${{ github.workspace }}/action/github/scripts/
+          PREVIOUS_VERSION=$(python semver_release_version.py --file ${{ env.VERSION_FILE }} --latest)
+          if [ "${{ inputs.release_type }}" != 'alpha' ]; then
+            NEXT_VERSION=$( python semver_release_version.py --next --type ${{ inputs.release_type }} --file ${{ env.VERSION_FILE }} --bump-prerelease --save)
+          else
+            NEXT_VERSION=$(python semver_release_version.py --next --type alpha --file ${{ env.VERSION_FILE }} --save)
+          fi
+          RELEASE_CYCLE_START=$( python semver_release_version.py --version "$VERSION" --latest --type patch)
+          echo "RELEASE_CYCLE_START=${RELEASE_CYCLE_START}" >> $GITHUB_ENV
+          echo "PREVIOUS_VERSION=${PREVIOUS_VERSION}" >> $GITHUB_ENV
+          echo "NEXT_VERSION=${NEXT_VERSION}" >> $GITHUB_ENV
+      - name: change working directory
+        run: cd ${{ github.workspace }}/action/package/
+      - name: Create Changelog
+        run: |
+          cd ${{ github.workspace }}/action/package/
+          python ${{ github.workspace }}/action/github/scripts/changelog_postprocess.py --since ${{ env.PREVIOUS_VERSION }}
+        env:
+          GIT_CLIFF_PREPEND: ${{ github.workspace }}/action/package/${{ inputs.changelog_file }}
+          GIT_CLIFF_TAG: ${{ env.NEXT_VERSION }}
+      - name: Commit Prerelease Changes (${{ env.PREVIOUS_VERSION }} -> ${{ env.NEXT_VERSION }})
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Prerelease Changes ${{ env.NEXT_VERSION }}
+          repository: action/package/
+      - name: Create Release Changelog
+        id: release_changelog
+        run: |
+          cd ${{ github.workspace }}/action/package/
+          python ${{ github.workspace }}/action/github/scripts/changelog_postprocess.py --since ${{ env.PREVIOUS_VERSION }}
+        env:
+          GIT_CLIFF_TAG: ${{ env.NEXT_VERSION }}
+      - name: Create Pre-release
+        id: create_release
+        uses: ncipollo/release-action@v1
+        with:
+          token: ${{ secrets.GH_PAT }}
+          tag: ${{ env.NEXT_VERSION }}
+          name: Release ${{ env.NEXT_VERSION }}
+          body: |
+            Changes in this Release
+            ${{ steps.release_changelog.outputs.changelog }}
+          commit: dev
+          prerelease: true
+      - name: Build Distribution Packages
+        run: |
+          mkdir -p ${{ github.workspace }}/action/dist
+          cd ${{ github.workspace }}/action/package/
+          python setup.py sdist bdist_wheel --dist-dir ${{ github.workspace }}/action/dist
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          password: ${{secrets.PYPI_TOKEN}}
+          packages-dir: action/dist/

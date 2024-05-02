@@ -82,6 +82,6 @@ jobs:
           pip install .
       - name: Test Skill Installation
         run: |
-          export TEST_SKILL_PATH=${{ github.workspace }}/action/skill/${{inputs.skill_location}}
-          export TEST_SKILL_ENTRYPOINT_NAME=${{ inputs.skill_id }}
+          export TEST_SKILL_PATH="${{ github.workspace }}/action/skill/${{inputs.skill_location}}"
+          export TEST_SKILL_ENTRYPOINT_NAME="${{ inputs.skill_id }}"
           pytest ${{ github.workspace }}/action/github/test/test_skill_install.py

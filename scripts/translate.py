@@ -34,6 +34,8 @@ def get_target_languages():
             if len(subfolder) == 5 and subfolder[2] == "-":
                 langs.add(subfolder)
     langs = langs.union(BASE_LANGS)
+    if "en-us" in langs:
+        langs.remove("en-us")
     return langs
 
 single_lang = os.getenv("TARGET_LANG")
@@ -59,7 +61,10 @@ def file_location(f: str, base: str) -> bool:
 def translate(lines: list, target_lang: str) -> list:
     translations = []
     for line in lines:
+        drop = False
         replacements = dict()
+        # TODO: still not failsafe as the translator of different langs might
+        # interpret "@1" as something to translate (seen this with french), hence the drop
         for num, var in enumerate(re.findall(r"(?:{{|{)[ a-zA-Z0-9_]*(?:}}|})", line)):
             line = line.replace(var, f'@{num}', 1)
             replacements[f'@{num}'] = var
@@ -68,8 +73,13 @@ def translate(lines: list, target_lang: str) -> list:
         except Exception as e:
             continue
         for num, var in replacements.items():
+            # saveguard against bad translations
+            if num not in translated:
+                drop = True
+                break
             translated = translated.replace(num, var)
-        translations.append(translated)
+        if not drop:
+            translations.append(translated)
 
     return translations
 
