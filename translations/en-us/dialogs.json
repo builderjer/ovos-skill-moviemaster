@@ -1,0 +1,81 @@
+{
+    "/dialog/movie.popular.dialog": [
+        "The new popular movies out now are {popularlist} and {lastmovie}.",
+        "{popularlist} and {lastmovie} top the movie charts right now."
+    ],
+    "/dialog/movie.production.single.dialog": [
+        "The production company {company}, produced the movie {movie}"
+    ],
+    "/dialog/bad.tv.genre.catagory.dialog": [
+        "I can not find any (TV|television) shows with the genre {genre}"
+    ],
+    "/dialog/movie.genre.multiple.dialog": [
+        "The (movie|film|flick) can be found in one of the genres; {genrelist} and {genrelistlast}",
+        "People consider the (movie|film) a {genrelist} or {genrelistlast}"
+    ],
+    "/dialog/genre.movie.search.dialog": [
+        "the movies with the genre {genre} are;"
+    ],
+    "/dialog/genre.tv.search.dialog": [
+        "the (television|TV) shows with the genre {genre} are;"
+    ],
+    "/dialog/no.info.dialog": [
+        "I'm sorry.  I can not find any information on the (film|movie) {movie}"
+    ],
+    "/dialog/movie.description.dialog": [
+        "the (movie|film) {movie} is about this.",
+        "here is a synopsis of the (movie|film) {movie}."
+    ],
+    "/dialog/movie.description.error.dialog": [
+        "I can not seem to find information on the (movie|film|flick) {movie}."
+    ],
+    "/dialog/movie.recommendations.dialog": [
+        "I recommend the movies {movielist} and {lastmovie}, if you like the (movie|flick) {movie}",
+        "The movies {movielist} and {lastmovie} are a good choice if you like the (movie|flick) {movie}"
+    ],
+    "/dialog/movie.info.response.dialog": [
+        "{movie} was released on {year}, with a budget of {budget} dollars."
+    ],
+    "/dialog/movie.top.dialog": [
+        "These are the (top|most popular) movies (out|playing) now; {toplist}, and {lastmovie}",
+        "{toplist}, and {lastmovie} are the (top|most popular) movies (out|playing) now."
+    ],
+    "/dialog/fallback.api.dialog": [
+        "Falling back to the default A P I"
+    ],
+    "/dialog/movie.year.dialog": [
+        "the (movie|film|flick) {movie} was (made|released) on {year}"
+    ],
+    "/dialog/movie.genre.single.dialog": [
+        "The (movie|film) {movie} could be considered a {genre}",
+        "You can find the (film|flick) {movie} in the {genre} section"
+    ],
+    "/dialog/movie.year.error.dialog": [
+        "I can not find a release date for the (movie|film|flick) {movie}"
+    ],
+    "/dialog/movie.production.multiple.dialog": [
+        "The companies {companies} and {lastcompany} produced the movie {movie}",
+        "{companies} and {lastcompany} produced the movie {movie}"
+    ],
+    "/dialog/no.valid.api.dialog": [
+        "The A P I key that you entered is not valid.  Refer to the read me file for instructions on how to obtain one."
+    ],
+    "/dialog/movie.cast.dialog": [
+        "Here is the cast of {movie}; {actorlist} and {lastactor}",
+        "The following people (star|play|act) in the movie {movie}; {actorlist} and {lastactor}"
+    ],
+    "/dialog/bad.movie.genre.catagory.dialog": [
+        "I can not find any (TV|television) shows with the genre {genre}"
+    ],
+    "/dialog/no.api.dialog": [
+        "You must enter your T M D B  A P I key at home dot mycroft dot A I to use the movie master skill"
+    ],
+    "/dialog/no.info.general.dialog": [
+        "I'm sorry, I can not find the list you are looking for right now; please ask again later."
+    ],
+    "/dialog/movie.runtime.dialog": [
+        "The (movie|film|flick) {movie}, runs for {runtime} minutes.",
+        "The (movie|film|flick) {movie} is {runtime} minutes long.",
+        "Watching {movie}; You can expect about {runtime} minutes before you can have a bathroom break."
+    ]
+}

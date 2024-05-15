@@ -1,0 +1,75 @@
+{
+    "/dialog/movie.popular.dialog": [
+        "Las nuevas pel\u00edculas populares por ahi son {popularlist}",
+        "Las pel\u00edculas {popularlist} lideran los rankings ahora."
+    ],
+    "/dialog/movie.production.single.dialog": [
+        "La productora {company} produjo la pel\u00edcula {movie}"
+    ],
+    "/dialog/bad.tv.genre.catagory.dialog": [
+        "No puedo hallar ning\u00fan programa de (TV|television) con el g\u00e9nero {genre}"
+    ],
+    "/dialog/movie.genre.multiple.dialog": [
+        "(La|El) (pel\u00edcula|filme) se puede encontrar en uno de los g\u00e9neros; {genrelist} y {genrelistlast}",
+        "La gente considera (la|el) (pel\u00edcula|filme) (una|un) {genrelist} o {genrelistlast}"
+    ],
+    "/dialog/genre.movie.search.dialog": [
+        "las pel\u00edculas del g\u00e9nero {genre} son;"
+    ],
+    "/dialog/genre.tv.search.dialog": [
+        "Los programas de (televisi\u00f3n|TV) del g\u00e9nero {genre} son;"
+    ],
+    "/dialog/no.info.dialog": [
+        "Lo siento,  No puedo encontrar ninguna informaci\u00f3n sobre (la|el) (pel\u00edcula|filme) {movie}"
+    ],
+    "/dialog/movie.description.dialog": [
+        "la pelicula {movie} ((se|) trata|va) de \u00e9sto.",
+        "Aqu\u00ed hay una sinopsis de la pel\u00edcula {movie}"
+    ],
+    "/dialog/movie.recommendations.dialog": [
+        "Recomiendo las pel\u00edculas {movielist} si te gusta la pel\u00edcula {movie}",
+        "Las pel\u00edculas {movielist} son una buena elecci\u00f3n si te gusta la pel\u00edcula {movie}"
+    ],
+    "/dialog/movie.info.response.dialog": [
+        "La pel\u00edcula {movie} se estren\u00f3 en el a\u00f1o {year} con un presupuesto de {budget} de d\u00f3lares."
+    ],
+    "/dialog/movie.top.dialog": [
+        "Estas son las pel\u00edculas (top|m\u00e1s populares) en cartelera ahora; {toplist}",
+        "{toplist} son las pel\u00edculas (top|m\u00e1s populares) en cartelera ahora."
+    ],
+    "/dialog/fallback.api.dialog": [
+        "Retornando a la A P I por defecto"
+    ],
+    "/dialog/movie.year.dialog": [
+        "(La|El) (pel\u00edcula|filme) {movie} fue (hecha|hecho) en el a\u00f1o {year}"
+    ],
+    "/dialog/movie.genre.single.dialog": [
+        "(La|El) (pel\u00edcula|filme) {movie} se puede considerar del g\u00e9nero {genre}",
+        "Puedes encontrar la pel\u00edcula {movie} en la secci\u00f3n de {genre}"
+    ],
+    "/dialog/movie.production.multiple.dialog": [
+        "Las compan\u00edas {companies} y {lastcompany} produjeron la pel\u00edcula {movie}",
+        "{companies} y {lastcompany} produjeron la pel\u00edcula {movie}"
+    ],
+    "/dialog/no.valid.api.dialog": [
+        "La clave A P I que ingresaste no es v\u00e1lida.  Refi\u00e9rete al archivo reade me para instrucciones acerca de c\u00f3mo obtener una."
+    ],
+    "/dialog/movie.cast.dialog": [
+        "Aqu\u00ed est\u00e1 el elenco de {movie}; {actorlist} y {lastactor}",
+        "Los siguientes actores (protagonizan|trabajan|act\u00faan) en la pel\u00edcula {movie}; {actorlist} y {lastactor}"
+    ],
+    "/dialog/bad.movie.genre.catagory.dialog": [
+        "No puedo hallar ning\u00fan programa de (TV|television) con el g\u00e9nero {genre}"
+    ],
+    "/dialog/no.api.dialog": [
+        "Debes ingresar tu clave A P I  T M D B en hombe punto mycroft put A I para usar el skill movie master"
+    ],
+    "/dialog/no.info.general.dialog": [
+        "Lo siento, no puedo encontrar la lista que estas buscando justo ahora; por favor, consulta de nuevo luego"
+    ],
+    "/dialog/movie.runtime.dialog": [
+        "(La|El) (pel\u00edcula|filme) {movie} dura {runtime} minutos.",
+        "(La|El) (pel\u00edcula|filme) {movie} tiene una duraci\u00f3n de {runtime} minutos.",
+        "Viendo la pel\u00edcula {movie}; Puedes esperar cerca de {runtime} minutos antes de que puedas ir al ba\u00f1o."
+    ]
+}

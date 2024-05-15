@@ -1,0 +1,55 @@
+{
+    "/vocab/genre.movie.search.intent": [
+        "(list|find) (movies|films) that are (a| ) {genre}",
+        "(list|find) {genre} (movies|films)"
+    ],
+    "/vocab/movie.popular.intent": [
+        "(list|search|(search|look) for) popular (movies|films|flicks)",
+        "what are ( |the) popular (movies|films|flicks) (playing|out) ( |now)"
+    ],
+    "/vocab/movie.information.intent": [
+        "(find|get|look for|is there) (information|info) (on|about) the (movie|film|flick) {movie}",
+        "(give|tell|get) (|me|us) (information|info) (on|about) the (movie|film|flick) {movie}",
+        "(do you have|can you get) (info|information) (on|about) the (movie|film|flick) {movie}"
+    ],
+    "/vocab/movie.genre.search.intent": [
+        "(list|find) (movies|films|flicks) that are (a| ) {genre}",
+        "(list|find) {genre} (movies|films|flicks)"
+    ],
+    "/vocab/movie.production.intent": [
+        "(who|what company) (produced|made) the movie {movie}"
+    ],
+    "/vocab/movie.top.intent": [
+        "(list|what are|search for) the (top|most popular|highest rated) (movies|films|flicks) (playing|out) (|now)"
+    ],
+    "/vocab/movie.genres.intent": [
+        "what (genres|genre) does the (movie|film|flick) {movie} belong to",
+        "what are the (genres|genre) of the (movie|film|flick) {movie}",
+        "what (genres|genre) (is|are) the (movie|film|flick) {movie}"
+    ],
+    "/vocab/movie.recommendations.intent": [
+        "recommend (movies|films|flicks) (similar to|like) {movie}",
+        "what (movies|films|flicks) (would|do) you recommend (similar to|like) {movie}",
+        "(list|get) (|good) (movies|films|flicks) (similar to|like) {movie}"
+    ],
+    "/vocab/movie.year.intent": [
+        "(what year|when|what date) was the (movie|film|flick) {movie} (made|released)"
+    ],
+    "/vocab/movie.runtime.intent": [
+        "How long is the (movie|film|flick) {movie}",
+        "What is the (runtime|length) of the (movie|film|flick) {movie}",
+        "Get the (runtime|length) of the (movie|film|flick) {movie}"
+    ],
+    "/vocab/movie.description.intent": [
+        "what is the (movie|film|flick) {movie} about",
+        "tell (me|us) about the (movie|film|flick) {movie}",
+        "(give|get) (|me|us) a (description|synopsis) of the (movie|film|flick) {movie}"
+    ],
+    "/vocab/genre.tv.search.intent": [
+        "(list|find|get) (TV shows|television shows|shows) that are (|a) {genre}",
+        "(list|find|get) {genre} (TV shows|television shows|shows)"
+    ],
+    "/vocab/movie.cast.intent": [
+        "who (acts|plays|is) in the (movie|film|flick) {movie}"
+    ]
+}

@@ -1,0 +1,51 @@
+{
+    "/vocab/genre.movie.search.intent": [
+        "(lista|hitta) (video|filmer) som \u00e4r (i|) {genre}",
+        "(lista|hitta) {genre} (video|filmer)"
+    ],
+    "/vocab/movie.popular.intent": [
+        "(lista|s\u00f6k|s\u00f6k efter) popul\u00e4ra (video|filmer|film)",
+        "vad \u00e4r ( |de) popul\u00e4ra (videon|filmen|film) (spelar|ut) ( |nu)"
+    ],
+    "/vocab/movie.information.intent": [
+        "(hitta|h\u00e4mta|leta efter|\u00e4r d\u00e4r) (information|info) (p\u00e5|om) (videon|filmen|film) {movie}",
+        "(ge|ber\u00e4tta|h\u00e4mta) (|mig|oss) (information|info) (p\u00e5|om) (videon|filmen|film) {movie}",
+        "(har du|kan du h\u00e4mta) (info|information) om (videon|filmen|film) {movie}"
+    ],
+    "/vocab/movie.production.intent": [
+        "(vem|vilket f\u00f6retag) (producerade|gjorde) filmen {movie}"
+    ],
+    "/vocab/movie.top.intent": [
+        "(lista|vad \u00e4r|s\u00f6k efter) den (popul\u00e4ra|mest popul\u00e4ra|h\u00f6gst rankade) (videon|filmen|film) (som spelas|\u00e4r ute) (|nu)"
+    ],
+    "/vocab/movie.genres.intent": [
+        "vilken (genre|genren) tillh\u00f6r (videon|filmen|film) {movie}",
+        "vilken \u00e4r (genre|genren) f\u00f6r (videon|filmen|film) {movie}",
+        "vilken (genre|genren) (\u00e4r|tillh\u00f6r) denna (videon|filmen|film) {movie}"
+    ],
+    "/vocab/movie.recommendations.intent": [
+        "rekommendera (videon|filmen|film) (liknande|s\u00e5som) {movie}",
+        "vilka (video|filmer|film) (skulle du|du) rekommenderar (liknande|s\u00e5som) {movie}",
+        "(lista|h\u00e4mta) (|bra) (videon|filmen|film) (liknande|s\u00e5som) {movie}"
+    ],
+    "/vocab/movie.year.intent": [
+        "(vilket \u00e5r|n\u00e4r|vilket datum) var (videon|filmen|film) {movie} (gjord|sl\u00e4ppt)"
+    ],
+    "/vocab/movie.runtime.intent": [
+        "Hur l\u00e5ng \u00e4r (videon|filmen|film) {movie}",
+        "Vilken \u00e4r (tiden|l\u00e4ngden) f\u00f6r (videon|filmen|film) {movie}",
+        "H\u00e4mta (tiden|l\u00e4ngden) f\u00f6r (videon|filmen|film) {movie}"
+    ],
+    "/vocab/movie.description.intent": [
+        "vad handlar (videon|filmen|film) {movie} om",
+        "ber\u00e4tta f\u00f6r (mig|oss) om (videon|filmen|film) {movie}",
+        "(ge|h\u00e4mta) (mig|oss) en (beskrivning|sammanfattning) av (videon|filmen|film) {movie}"
+    ],
+    "/vocab/genre.tv.search.intent": [
+        "(lista|hitta|f\u00e5) (TV-program|TV program|program) som \u00e4r (|en) {genre}",
+        "(lista|hitta|f\u00e5) {genre} (TV-program|TV program|program)"
+    ],
+    "/vocab/movie.cast.intent": [
+        "vem (agerar|spelar|\u00e4r med) i (videon|filmen|film) {movie}"
+    ]
+}

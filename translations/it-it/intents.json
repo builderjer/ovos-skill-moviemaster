@@ -1,0 +1,51 @@
+{
+    "/vocab/genre.movie.search.intent": [
+        "(elenca|trova) (film|) (di|d'|) {genre}",
+        "(elenca|cerca|trova) film (di|d'|) {genre}"
+    ],
+    "/vocab/movie.popular.intent": [
+        "(Elenca|Cerca|Dimmi) ( |dei|di|i) film pi\u00f9 popolari",
+        "Quali sono i film pi\u00f9 popolari ( |in proiezione) (al momento|del momento|ora) ( |nei cinema|al cinema)"
+    ],
+    "/vocab/movie.information.intent": [
+        "(cerca|trova|guarda|cercami|trovami|ci sono) (informazioni|info) (su|riguardo) (|il|al) (|film) {movie}",
+        "(dammi|dimmi|trova|cerca|trovami|cercami) (informazioni|info) (su|riguardo) (|il|al) (|film) {movie}",
+        "(hai|puoi trovare|puoi cercare) (|delle) (info|informazioni) (su|sul) (|film) {movie}"
+    ],
+    "/vocab/movie.production.intent": [
+        "(chi|quale compagnia|quale casa di produzione) (ha prodotto|ha fatto) il film {movie}"
+    ],
+    "/vocab/movie.top.intent": [
+        "(elenca|quali sono|cerca) i (migliori|pi\u00f9 popolari|pi\u00f9 votati) film (in sala|nelle sale|al cinema|nei cinema) (in proiezione|fuori|disponibili) (|in questo momento|al momento|ora)"
+    ],
+    "/vocab/movie.genres.intent": [
+        "A (che|quale|quali) (genere|generi) (pu\u00f2 appartenere|appartiene) ( |il film) {movie}",
+        "(Qual|quali) (\u00e8|sono) (il|i) (genere|generi) (del film|di) {movie}",
+        "di (quali|quale|che) (generi|genere) (\u00e8|sono) ( |il|i) ( |film) {movie}"
+    ],
+    "/vocab/movie.recommendations.intent": [
+        "(raccomanda|raccomandami|consiglia|consigliami) (|dei|un) film (simili a|simile a|come|tipo) {movie}",
+        "(quali|quale) film (|mi) (raccomandi|raccomanderesti|consigli|consiglieresti) (simili a|simile a|come|tipo) {movie}",
+        "(raccomanda|raccomandami|consiglia|consigliami|trova|trovami|elenca|elencami) (|dei|un) (|bei|bel) film (simili a|simile a|come|tipo) {movie}"
+    ],
+    "/vocab/movie.year.intent": [
+        "(in quale anno|quando|in che anno) \u00e8 stato (fatto|realizzato|rilasciato) il film {movie}"
+    ],
+    "/vocab/movie.runtime.intent": [
+        "Quanto (dura|\u00e8 lungo) (il film|) {movie}",
+        "Qual \u00e8 la (durata|lunghezza) (del film|di) {movie}",
+        "(Quanto dura|Quanto \u00e8 lungo|Qual \u00e8 la( durata| lunghezza)) (del film|di|de) {movie}"
+    ],
+    "/vocab/movie.description.intent": [
+        "di cosa parla (il film|) {movie}",
+        "(Dimmi|Dicci|Parlami|Parlaci|Raccontami|Raccontaci) del film {movie}",
+        "(cerca|trova|dammi|cercami|trovami) una (descrizione|sinossi) (di|del) (|film) {movie}"
+    ],
+    "/vocab/genre.tv.search.intent": [
+        "(dimmi|trova|quali sono) (programmi TV|programmi televisivi|programmi) (|di|del) {genre}",
+        "(elenco|cerca|trova|cercami|trovami) (|di) (serie TV|serie|show|show televisivi) {genre}"
+    ],
+    "/vocab/movie.cast.intent": [
+        "chi (recita|interpreta|c'\u00e8) nel (film|) {movie}"
+    ]
+}

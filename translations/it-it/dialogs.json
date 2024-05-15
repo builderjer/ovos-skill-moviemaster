@@ -1,0 +1,75 @@
+{
+    "/dialog/movie.popular.dialog": [
+        "I film pi\u00f9 popolari (in proiezione|in sala|al cinema|nei cinema) (|al momento|in questo momento) sono {popularlist}",
+        "{popularlist} in cima alle classifiche cinematografiche in questo momento."
+    ],
+    "/dialog/movie.production.single.dialog": [
+        "La casa di produzione {company} ha prodotto il film {movie}"
+    ],
+    "/dialog/bad.tv.genre.catagory.dialog": [
+        "Non riesco a trovare nessuno show (TV|televisivo) di genere {genre}"
+    ],
+    "/dialog/movie.genre.multiple.dialog": [
+        "Il film pu\u00f2 essere trovato in uno dei generi; {genrelist} e {genrelistlast}",
+        "Le persone considerano il film (un|uno|una) {genrelist} o (un|uno|una) {genrelistlast}"
+    ],
+    "/dialog/genre.movie.search.dialog": [
+        "i film di {genre} sono;"
+    ],
+    "/dialog/genre.tv.search.dialog": [
+        "i programmi (televisivi|TV) di genere {genre} sono;"
+    ],
+    "/dialog/no.info.dialog": [
+        "Mi dispiace. Non riesco a trovare nessuna informazione sul (film) {movie}"
+    ],
+    "/dialog/movie.description.dialog": [
+        "il (film) {movie} parla di questo.",
+        "ecco una sinossi (di|del film) {movie}."
+    ],
+    "/dialog/movie.recommendations.dialog": [
+        "Ti consiglio i film {movielist}, se ti (piace|\u00e8 piaciuto) il film {movie}",
+        "I film {movielist} sono un'ottima scelta se ti (piace|\u00e8 piaciuto) (il film|) {movie}"
+    ],
+    "/dialog/movie.info.response.dialog": [
+        "{movie} \u00e8 stato distribuito nel {year}, con un budget di {budget} dollari."
+    ],
+    "/dialog/movie.top.dialog": [
+        "Questi sono i film (migliori|pi\u00f9 popolari) (in sala|nei cinema|in proiezione) in questo momento; {toplist}",
+        "{toplist} sono i (migliori film|film pi\u00f9 popolari) (in sala|in proiezione|nei cinema|al cinema) in questo momento."
+    ],
+    "/dialog/fallback.api.dialog": [
+        "Ripiego sulla vecchia A P I"
+    ],
+    "/dialog/movie.year.dialog": [
+        "il film {movie} \u00e8 stato (realizzato|rilasciato) nel {year}"
+    ],
+    "/dialog/movie.genre.single.dialog": [
+        "Il film {movie} potrebbe essere considerato (un|uno|una) {genre}",
+        "Puoi trovare (il film|) {movie} nella sezione {genre}"
+    ],
+    "/dialog/movie.production.multiple.dialog": [
+        "Le (compagnie|case di produzione|case produttrici) {companies} e {lastcompany} hanno prodotto il film {movie}",
+        "{companies} e {lastcompany} hanno prodotto il film {movie}"
+    ],
+    "/dialog/no.valid.api.dialog": [
+        "La chiave A P I che hai inserito non \u00e8 valida.  Fai riferimento al file 'read me' per le istruzioni su come ottenerne una."
+    ],
+    "/dialog/movie.cast.dialog": [
+        "Ecco il cast di {movie}; {actorlist} e {lastactor}",
+        "Le seguenti persone (sono nel|interpretano il|recitano nel) film {movie}; {actorlist} e {lastactor}"
+    ],
+    "/dialog/bad.movie.genre.catagory.dialog": [
+        "Non riesco a trovare nessuno show (TV|televisivo) di genere {genre}"
+    ],
+    "/dialog/no.api.dialog": [
+        "Devi inserire la tua chiave A P I  T M D B su home punto mycroft punto A I per usare la skill movie master"
+    ],
+    "/dialog/no.info.general.dialog": [
+        "Mi dispiace, non riesco a trovare l'elenco che stai cercando in questo momento; per favore riprova pi\u00f9 tardi."
+    ],
+    "/dialog/movie.runtime.dialog": [
+        "La durata (del film|di) {movie} \u00e8 di {runtime} minuti.",
+        "(|Il film) {movie} dura {runtime} minuti.",
+        "Guardando {movie}; ci si pu\u00f2 aspettare circa {runtime} minuti prima di poter fare una pausa bagno."
+    ]
+}

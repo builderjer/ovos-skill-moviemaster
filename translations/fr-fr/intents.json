@@ -1,0 +1,51 @@
+{
+    "/vocab/genre.movie.search.intent": [
+        "(liste|trouve) moi les (films|vid\u00e9os) du genre {genre}",
+        "(liste|trouve) les (films|videos) {genre}"
+    ],
+    "/vocab/movie.popular.intent": [
+        "(liste|recherche) (des|les) films populaires",
+        "quels sont les films populaires du moment qui sont (jou\u00e9s|sortis) "
+    ],
+    "/vocab/movie.information.intent": [
+        "(trouve|r\u00e9cup\u00e8re|recherche|cherche|y a t-il) des(informations|info) (sur|\u00e0 propos) (le|du) film {movie} ",
+        "(donne|dit|r\u00e9cup\u00e8re) (moi|nous) des (informations|infos) (sur|\u00e0 propos) du film {movie}",
+        "(est-ce que tu a|peux-tu r\u00e9cup\u00e9rer) des (informations|infos) sur le film {movie}"
+    ],
+    "/vocab/movie.production.intent": [
+        "(qui|quel studio) (a produit|a fait) le film {movie}"
+    ],
+    "/vocab/movie.top.intent": [
+        "(liste|quels sont|recherche) le (meilleur film|film le plus populaire|le film le mieux not\u00e9) du moment"
+    ],
+    "/vocab/movie.genres.intent": [
+        "A (quel genre|quels genres) le film {movie} appartient-il?",
+        "Quels sont les genres du film {movie}",
+        "De (quels genres|quel genre) (est|sont) (le|les) (film|films) {movie}"
+    ],
+    "/vocab/movie.recommendations.intent": [
+        "recommander des (films|video) (similaire au film|comme le film) {movie}",
+        "quels sont les films que vous recommanderiez (similaire au film|comme le film|comme) {movie}",
+        "(liste|r\u00e9cup\u00e8re) (les|des) (|bons) films (similaires au film|comme le film|comme) {movie}"
+    ],
+    "/vocab/movie.year.intent": [
+        "(en quelle ann\u00e9e|quand est-ce que|a quel date) le film {movie} a \u00e9t\u00e9 (fait|r\u00e9alis\u00e9|diffus\u00e9)"
+    ],
+    "/vocab/movie.runtime.intent": [
+        "Combien (|de temps) dure le film {movie}",
+        "Quelle est (la dur\u00e9e|la longueur) du film {movie}",
+        "Obtiens la (dur\u00e9e|longueur) du film {movie}"
+    ],
+    "/vocab/movie.description.intent": [
+        "De quoi parle le film {movie} ?",
+        "Parle (me|us) du (movie|film|flick) {movie}",
+        "Donne (moi|nous) (une description|le synoptique) du film {movie}"
+    ],
+    "/vocab/genre.tv.search.intent": [
+        "(liste|trouve|r\u00e9cup\u00e8re) les (\u00e9missions| \u00e9missions t\u00e9l\u00e9) du genre {genre}",
+        "(liste|trouve|r\u00e9cup\u00e8re) les (\u00e9missions t\u00e9l\u00e9|\u00e9missions) {genre}"
+    ],
+    "/vocab/movie.cast.intent": [
+        "qui (joue) dans (le film) {movie}"
+    ]
+}

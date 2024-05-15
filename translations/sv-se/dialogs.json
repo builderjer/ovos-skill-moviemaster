@@ -1,0 +1,75 @@
+{
+    "/dialog/movie.popular.dialog": [
+        "De nya popul\u00e4ra filmerna ute nu \u00e4r {popularlist}.",
+        "{popularlist} toppar filmlistorna just nu."
+    ],
+    "/dialog/movie.production.single.dialog": [
+        "Produktionsf\u00f6retaget {company}, producerade filmen {movie}"
+    ],
+    "/dialog/bad.tv.genre.catagory.dialog": [
+        "Jag kan inte hitta n\u00e5gra (TV|television) serier med genren {genre}"
+    ],
+    "/dialog/movie.genre.multiple.dialog": [
+        "(Videon|Filmen|Film) finns i en av genrerna; {genrelist} och {genrelistlast}",
+        "M\u00e4nniskor anser att (film|filmen) \u00e4r {genrelist} eller {genrelistlast}"
+    ],
+    "/dialog/genre.movie.search.dialog": [
+        "filmerna med genren {genre} \u00e4r;"
+    ],
+    "/dialog/genre.tv.search.dialog": [
+        "(television|TV) serierna med genren {genre} \u00e4r;"
+    ],
+    "/dialog/no.info.dialog": [
+        "Jag \u00e4r ledsen.  Jag kan inte hitta n\u00e5gon information om (videon|filmen) {movie}"
+    ],
+    "/dialog/movie.description.dialog": [
+        "(film|filmen) {movie} handlar om detta.",
+        "h\u00e4r \u00e4r en sammanfattning av (filmen|film) {movie}."
+    ],
+    "/dialog/movie.recommendations.dialog": [
+        "Jag rekommenderar filmerna {movielist}, om du gillar (videon|filmen|film) {movie}",
+        "Filmerna {movielist} \u00e4r ett bra val om du gillar (videon|filmen) {movie}"
+    ],
+    "/dialog/movie.info.response.dialog": [
+        "{movie} sl\u00e4pptes {year}, med en budget p\u00e5 {budget} dollar."
+    ],
+    "/dialog/movie.top.dialog": [
+        "Det h\u00e4r \u00e4r de (b\u00e4sta|mest popul\u00e4ra) filmerna (ute|som visas) nu; {toplist}",
+        "{toplist} \u00e4r de (b\u00e4sta|mest popul\u00e4ra) filmerna (ute|som spelar) nu."
+    ],
+    "/dialog/fallback.api.dialog": [
+        "Faller tillbaka till standard A P I"
+    ],
+    "/dialog/movie.year.dialog": [
+        "(Videon|Filmen|Film) {movie} (gjordes|sl\u00e4pptes) {year}"
+    ],
+    "/dialog/movie.genre.single.dialog": [
+        "(Film|filmen) {movie} kan betraktas som en {genre}",
+        "Du hittar (videon|filmen) {movie} i {genre} sektionen"
+    ],
+    "/dialog/movie.production.multiple.dialog": [
+        "F\u00f6retagen {companies} och {lastcompany} producerade filmen {movie}",
+        "{companies} och {lastcompany} producerade filmen {movie}"
+    ],
+    "/dialog/no.valid.api.dialog": [
+        "A P I-nyckeln som du angav \u00e4r inte giltig.  Se till l\u00e4s readme-filen f\u00f6r instruktioner om hur du f\u00e5r en."
+    ],
+    "/dialog/movie.cast.dialog": [
+        "H\u00e4r \u00e4r rollen fr\u00e5n {movie}; {actorlist} och {lastactor}",
+        "F\u00f6ljande personer (\u00e4r stj\u00e4rnan|spelar|agerar) i filmen {movie}; {actorlist} och {lastactor}"
+    ],
+    "/dialog/bad.movie.genre.catagory.dialog": [
+        "Jag kan inte hitta n\u00e5gra (TV|television) serier med genren {genre}"
+    ],
+    "/dialog/no.api.dialog": [
+        "Du m\u00e5ste ange din T M D B  A P I-nyckel p\u00e5 home punkt mycroft punkt A I f\u00f6r att anv\u00e4nda movie master skickligheten"
+    ],
+    "/dialog/no.info.general.dialog": [
+        "Jag \u00e4r ledsen, jag kan inte hitta listan du letar efter just nu; v\u00e4nligen fr\u00e5ga igen senare."
+    ],
+    "/dialog/movie.runtime.dialog": [
+        "(Videon|Filmen|Film) {movie}, varar i {runtime} minuter.",
+        "(Videon|Filmen|Film) {movie} \u00e4r {runtime} minuter l\u00e5ng.",
+        "Titta p\u00e5 {movie}; Du kan f\u00f6rv\u00e4nta dig cirka {runtime} minuter innan du kan ta en badrumsavbrott."
+    ]
+}

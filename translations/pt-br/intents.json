@@ -1,0 +1,52 @@
+{
+    "/vocab/genre.movie.search.intent": [
+        "(listar|buscar|procurar|exibir) (filmes|curtas) que s\u00e3o (de) {genre}",
+        "(listar|buscar|procurar) (filmes|curtas|filmes de|curtas de) {genre}"
+    ],
+    "/vocab/movie.popular.intent": [
+        "(listar|procurar|buscar) (filmes|curtas) populares",
+        "quais ( |s\u00e3o) os filmes populares (saindo|exibindo|em exibi\u00e7\u00e3o) ( |agora)"
+    ],
+    "/vocab/movie.information.intent": [
+        "(encontre|h\u00e1|procure|existe|tem) (informa\u00e7\u00e3o|informa\u00e7\u00f5es) (do|sobre o) filme {movie}",
+        "(me|nos) (d\u00ea|diga|fale) (informa\u00e7\u00e3o|informa\u00e7\u00f5es) (sobre o|do) filme {movie}",
+        "(voc\u00ea tem|voc\u00ea pode pegar|voc\u00ea consegue) (informa\u00e7\u00e3o|informa\u00e7\u00f5es) (sobre o|do) filme {movie}"
+    ],
+    "/vocab/movie.production.intent": [
+        "(quem|qual empresa|qual est\u00fadio) (produziu|fez) o filme {movie}"
+    ],
+    "/vocab/movie.top.intent": [
+        "(listar|liste|quais s\u00e3o|busque|buscar|procurar|procure) os (melhores|mais populares|mais cotados) (filmes|fitas) (saindo|sendo exibidos|em exibi\u00e7\u00e3o|em cartaz) (|agora)"
+    ],
+    "/vocab/movie.genres.intent": [
+        "(a qual|a quais) (g\u00eanero|g\u00eaneros) o filme {movie} pertence",
+        "(quais s\u00e3o|qual \u00e9 o) (g\u00eanero|g\u00eaneros) do (filme|curta) {movie}",
+        "(qual|quais) (\u00e9|s\u00e3o) (o|os) (g\u00eanero|g\u00eanero) do filme {movie}"
+    ],
+    "/vocab/movie.recommendations.intent": [
+        "recomende filmes (similares|parecidos|parecidos com|como|iguais) (ao|) {movie}",
+        "qual filme voc\u00ea (recomenda|recomendaria) (parecido|parecido com|igual|similar|como) (ao|) {movie}",
+        "(listar|liste|recomende|recomendar) (filmes|fitas) (similares|parecidos|parecidas|parecidos|parecidas|com|como|iguais) (ao|\u00e0) {movie}"
+    ],
+    "/vocab/movie.year.intent": [
+        "(em que ano|quando|em que data|em qual data|em qual ano) (o|a) (filme|fita) {movie} foi (feito|lan\u00e7ado)"
+    ],
+    "/vocab/movie.runtime.intent": [
+        "Quanto (tempo|dura) (\u00e9|) o (filme|fita) {movie}",
+        "Qual \u00e9 (o|a) (tempo|dura\u00e7\u00e3o|tamanho) do (filme|fita) {movie}",
+        "(Veja|Diga|Mostre) (o|a) (dura\u00e7\u00e3o|tamanho|tempo) (do|da) (filme|fita) {movie}"
+    ],
+    "/vocab/movie.description.intent": [
+        "(sobre|) (do que se trata|de que se trata|do que|o que|o que se trata) (\u00e9|) o filme {movie}",
+        "(me diga|conte para mim|fale para mim|fala pra mim) sobre o filme {movie}",
+        "(nos d\u00ea|me d\u00ea|me d\u00e1) uma (descri\u00e7\u00e3o|sinopse|resumo) do (filme|curta) {movie}",
+        "."
+    ],
+    "/vocab/genre.tv.search.intent": [
+        "(listar|procurar|buscar|obter|mostrar|exibir) (programas|s\u00e9ries|seriados) (de TV) que s\u00e3o de {genre}",
+        "(listar|encontrar|pegar) {genre} (programas de TV|programas de televis\u00e3o|programas|s\u00e9ries|seriados)"
+    ],
+    "/vocab/movie.cast.intent": [
+        "quem (atua|contracena|estreia|est\u00e1) no (filme|curta) {movie}"
+    ]
+}
