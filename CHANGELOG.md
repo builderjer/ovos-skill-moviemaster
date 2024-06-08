@@ -1,12 +1,27 @@
 # Changelog
 
-## [V0.0.1a2](https://github.com/builderjer/ovos-skill-moviemaster/tree/V0.0.1a2) (2024-01-28)
+## [Unreleased](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/tree/HEAD)
 
-[Full Changelog](https://github.com/builderjer/ovos-skill-moviemaster/compare/3f841b6b950d223958ad4616b7d08910436509c5...V0.0.1a2)
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/compare/V0.0.1a3...HEAD)
 
 **Merged pull requests:**
 
-- Update [\#1](https://github.com/builderjer/ovos-skill-moviemaster/pull/1) ([builderjer](https://github.com/builderjer))
+- feat: fix tests and workflows? [\#9](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/pull/9) ([builderjer](https://github.com/builderjer))
+- fix: org\_name [\#5](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/pull/5) ([builderjer](https://github.com/builderjer))
+- feat/workflows [\#3](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/pull/3) ([builderjer](https://github.com/builderjer))
+- feat/update\_to\_dev [\#2](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/pull/2) ([builderjer](https://github.com/builderjer))
+
+## [V0.0.1a3](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/tree/V0.0.1a3) (2024-02-10)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/compare/V0.0.1a2...V0.0.1a3)
+
+## [V0.0.1a2](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/tree/V0.0.1a2) (2024-01-28)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/compare/3f841b6b950d223958ad4616b7d08910436509c5...V0.0.1a2)
+
+**Merged pull requests:**
+
+- Update [\#1](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/pull/1) ([builderjer](https://github.com/builderjer))
 
 
 
