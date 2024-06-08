@@ -1,8 +1,8 @@
 # Changelog
 
-## [Unreleased](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/tree/HEAD)
+## [V0.0.1a4](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/tree/V0.0.1a4) (2024-06-08)
 
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/compare/V0.0.1a3...HEAD)
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/compare/V0.0.1a3...V0.0.1a4)
 
 **Merged pull requests:**
 
