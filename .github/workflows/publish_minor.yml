@@ -1,22 +1,7 @@
 # This workflow will generate a distribution and upload it to PyPI
 
-name: Publish Alpha Build ...aX
+name: Publish Minor Release .X.0
 on:
-  push:
-    branches:
-      - dev
-    paths-ignore:
-      - 'version.py'
-      - 'test/**'
-      - 'examples/**'
-      - '.github/**'
-      - '.gitignore'
-      - 'LICENSE'
-      - 'Dockerfile'
-      - 'CHANGELOG.md'
-      - 'MANIFEST.in'
-      - 'readme.md'
-      - 'scripts/**'
   workflow_dispatch:
 
 jobs:
@@ -34,10 +19,10 @@ jobs:
       - name: Install Build Tools
         run: |
           python -m pip install build wheel
-      - name: Increment Version
+      - name: Remove alpha (declare stable)
         run: |
           VER=$(python setup.py --version)
-          python scripts/bump_alpha.py
+          python scripts/remove_alpha.py
       - name: "Generate release changelog"
         uses: heinrichreimer/github-changelog-generator-action@v2.3
         with:
@@ -46,8 +31,14 @@ jobs:
       - name: Commit to dev
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Increment Version
+          commit_message: Declare alpha stable
           branch: dev
+      - name: Push dev -> master
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: master
+          force: true
       - name: version
         run: echo "::set-output name=version::$(python setup.py --version)"
         id: version
@@ -63,10 +54,22 @@ jobs:
             Changes in this Release
             ${{ steps.changelog.outputs.changelog }}
           draft: false
-          prerelease: true
+          prerelease: false
       - name: Build Distribution Packages
         run: |
           python setup.py bdist_wheel
+      - name: Prepare next Minor version
+        run: echo "::set-output name=version::$(python setup.py --version)"
+        id: alpha
+      - name: Increment Version ${{ steps.alpha.outputs.version }}Alpha0
+        run: |
+          VER=$(python setup.py --version)
+          python scripts/bump_minor.py
+      - name: Commit to dev
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Prepare Next Version
+          branch: dev
       - name: Publish to Test PyPI
         uses: pypa/gh-action-pypi-publish@master
         with:
