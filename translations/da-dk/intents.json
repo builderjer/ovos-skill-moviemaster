@@ -25,7 +25,7 @@
   "/vocab/movie.genres.intent": [
     "hvad (genrer | genre) tilhører (filmen|) {movie}",
     "hvad er (genrer | genre) af (filmen|) {movie}",
-    null
+    "hvad (genrer | genre) er (filmem | ) {movie}"
   ],
   "/vocab/movie.recommendations.intent": [
     "anbefal en film der (ligner | lignende) {movie}",
@@ -37,11 +37,11 @@
   ],
   "/vocab/movie.runtime.intent": [
     "Hvor lang tid (er|varer) (filmen|)  {movie}",
-    null,
+    "Hvad er (runtime|længde) af (film|film|flick) {movie}",
     "Få (runtime | længden) af (film | film | flick) {movie}"
   ],
   "/vocab/movie.description.intent": [
-    null,
+    "hvad handler (filmen|flicken) {movie} om",
     "fortæl (mig | os) om (filmen|) {movie}",
     "giv (mig | os) en (beskrivelse | synopsis) af (filmen|) {movie}"
   ],
@@ -50,6 +50,6 @@
     "(list | find) {genre} (tv-shows | fjernsnsprogrammer | programmer)"
   ],
   "/vocab/movie.cast.intent": [
-    null
+    "hvem (spiller | er) i filmen {movie}"
   ]
 }
