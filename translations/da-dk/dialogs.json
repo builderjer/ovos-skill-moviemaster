@@ -1,63 +1,81 @@
 {
-    "/dialog/movie.popular.dialog": [
-        "De nyeste popul\u00e6re film der er ude nu er {popul\u00e6rliste}.",
-        "{popularlist} top filmen charts lige nu."
-    ],
-    "/dialog/movie.production.single.dialog": [
-        "Produktionsselskabet {company} producerede filmen {movie}"
-    ],
-    "/dialog/movie.genre.multiple.dialog": [
-        "Filmen (filmen | filmen | flicken) findes i en af \u200b\u200bgenrene; {genrelist} og {genrelistlast}",
-        "Folk mener (filmen | filmen) er en {genrelist} eller en {genrelistlastlast}"
-    ],
-    "/dialog/genre.movie.search.dialog": [
-        "filmene med genren {genre} er;"
-    ],
-    "/dialog/genre.tv.search.dialog": [
-        "(fjernsyn | tv) (shows | serier) med genren {genre} er;"
-    ],
-    "/dialog/no.info.dialog": [
-        "Undskyld. Jeg kan ikke finde nogen oplysninger om filmen {movie}"
-    ],
-    "/dialog/movie.description.dialog": [
-        "(filmen | filmen) {movie} handler om dette.",
-        "her er en oversigt over (filmen | filmen) {film}."
-    ],
-    "/dialog/movie.recommendations.dialog": [
-        "Jeg anbefaler filmmene {movielist}, hvis du kan lide filmen (filnen | flicken) {movie}",
-        "Filmerne {movielist} er et godt valg, hvis du kan lide filmen {movie}"
-    ],
-    "/dialog/movie.info.response.dialog": [
-        "{movie} blev udgivet den {\u00e5r} med et budget p\u00e5 {budget} dollars."
-    ],
-    "/dialog/movie.top.dialog": [
-        "Dette er (top | den mest popul\u00e6re) film (ude | der spiller) nu; {Topliste}",
-        "{toplist} er (top | den mest popul\u00e6re) film (ude | der spiller) nu."
-    ],
-    "/dialog/movie.year.dialog": [
-        "(filmen | flicken) {movie} blev (udgivet) i {\u00e5r}"
-    ],
-    "/dialog/movie.genre.single.dialog": [
-        "(filmen | filmen) {movie} kunne v\u00e6re en {genre}",
-        "Du kan finde (filmen | flicken) {movie} under sektionen {genre}"
-    ],
-    "/dialog/movie.production.multiple.dialog": [
-        "Virksomhederne {companies} og {lastcompany} producerede filmen {movie}",
-        "{companies} og {lastcompany} producerede filmen {movie}"
-    ],
-    "/dialog/movie.cast.dialog": [
-        "Her er casten af \u200b\u200b{movie}; {actorlist} og {lastactor}",
-        "F\u00f8lgende personer (star | play | act) i filmen {movie}; {actorlist} og {lastactor}"
-    ],
-    "/dialog/bad.genre.catagory.dialog": [
-        "Jeg kan ikke finde nogen (film | film) med genren {genre}"
-    ],
-    "/dialog/no.info.general.dialog": [
-        "Jeg er ked af det, jeg kan ikke finde den liste, du leder efter lige nu; sp\u00f8rg igen senere."
-    ],
-    "/dialog/movie.runtime.dialog": [
-        "Filmen {movie}, varer i {runtime} minutter.",
-        "Filmen {movie} er {runtime} minutter lang.",
-        "Hvis du ser {movie}; Du kan forvente omkring {runtime} minutter, f\u00f8r du kan f\u00e5 en tissepause."
-    ]
+  "/dialog/movie.popular.dialog": [
+    "De nyeste populære film der er ude nu er {lastmovie}.",
+    "{lastmovie} top filmen charts lige nu."
+  ],
+  "/dialog/movie.production.single.dialog": [
+    "Produktionsselskabet {company} producerede filmen {movie}"
+  ],
+  "/dialog/bad.tv.genre.catagory.dialog": [
+    null
+  ],
+  "/dialog/movie.genre.multiple.dialog": [
+    "Filmen (filmen | filmen | flicken) findes i en af ​​genrene; {genrelist} og {genrelistlast}",
+    "Folk mener (filmen | filmen) er en {genrelist} eller en {genrelistlastlast}"
+  ],
+  "/dialog/genre.movie.search.dialog": [
+    "filmene med genren {genre} er;"
+  ],
+  "/dialog/genre.tv.search.dialog": [
+    "(fjernsyn | tv) (shows | serier) med genren {genre} er;"
+  ],
+  "/dialog/no.info.dialog": [
+    "Undskyld. Jeg kan ikke finde nogen oplysninger om filmen {movie}"
+  ],
+  "/dialog/movie.description.dialog": [
+    "(filmen | filmen) {movie} handler om dette.",
+    "her er en oversigt over (filmen | filmen) {movie}."
+  ],
+  "/dialog/movie.description.error.dialog": [
+    "Jeg kan tilsyneladende ikke finde information om (film|film|film) {movie}."
+  ],
+  "/dialog/movie.recommendations.dialog": [
+    "Jeg anbefaler filmmene {movielist}, hvis du kan lide filmen (filmen | flicken) {movie}",
+    "Filmerne {movielist} er et godt valg, hvis du kan lide filmen {movie}"
+  ],
+  "/dialog/movie.info.response.dialog": [
+    "{movie} blev udgivet den {år} med et budget på {budget} dollars."
+  ],
+  "/dialog/movie.top.dialog": [
+    "Dette er (top | den mest populære) film (ude | der spiller) nu; {lastmovie}",
+    "{toplist} og {lastmovie} er de (top|mest populære) film (ude|der spiller) nu."
+  ],
+  "/dialog/fallback.api.dialog": [
+    null
+  ],
+  "/dialog/movie.year.dialog": [
+    "(filmen | flicken) {movie} blev (udgivet) i {year}"
+  ],
+  "/dialog/movie.genre.single.dialog": [
+    "(filmen | filmen) {movie} kunne være en {genre}",
+    "Du kan finde (filmen | flicken) {movie} under sektionen {genre}"
+  ],
+  "/dialog/movie.year.error.dialog": [
+    null
+  ],
+  "/dialog/movie.production.multiple.dialog": [
+    "Virksomhederne {companies} og {lastcompany} producerede filmen {movie}",
+    "{companies} og {lastcompany} producerede filmen {movie}"
+  ],
+  "/dialog/no.valid.api.dialog": [
+    null
+  ],
+  "/dialog/movie.cast.dialog": [
+    "Her er casten af ​​{movie}; {actorlist} og {lastactor}",
+    "Følgende personer (star | play | act) i filmen {movie}; {actorlist} og {lastactor}"
+  ],
+  "/dialog/bad.movie.genre.catagory.dialog": [
+    null
+  ],
+  "/dialog/no.api.dialog": [
+    null
+  ],
+  "/dialog/no.info.general.dialog": [
+    "Jeg er ked af det, jeg kan ikke finde den liste, du leder efter lige nu; spørg igen senere."
+  ],
+  "/dialog/movie.runtime.dialog": [
+    "Filmen {movie}, varer i {runtime} minutter.",
+    "Filmen {movie} er {runtime} minutter lang.",
+    "Hvis du ser {movie}; Du kan forvente omkring {runtime} minutter, før du kan få en tissepause."
+  ]
 }
