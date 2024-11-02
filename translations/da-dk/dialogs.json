@@ -7,7 +7,7 @@
     "Produktionsselskabet {company} producerede filmen {movie}"
   ],
   "/dialog/bad.tv.genre.catagory.dialog": [
-    null
+    "Jeg kan ikke finde nogen (tv|tv)-shows med genren {genre}"
   ],
   "/dialog/movie.genre.multiple.dialog": [
     "Filmen (filmen | filmen | flicken) findes i en af ​​genrene; {genrelist} og {genrelistlast}",
@@ -41,7 +41,7 @@
     "{toplist} og {lastmovie} er de (top|mest populære) film (ude|der spiller) nu."
   ],
   "/dialog/fallback.api.dialog": [
-    null
+    "Falder tilbage til standard A P I"
   ],
   "/dialog/movie.year.dialog": [
     "(filmen | flicken) {movie} blev (udgivet) i {year}"
@@ -51,24 +51,24 @@
     "Du kan finde (filmen | flicken) {movie} under sektionen {genre}"
   ],
   "/dialog/movie.year.error.dialog": [
-    null
+    "Jeg kan ikke finde en udgivelsesdato for (film|film|film) {movie}"
   ],
   "/dialog/movie.production.multiple.dialog": [
     "Virksomhederne {companies} og {lastcompany} producerede filmen {movie}",
     "{companies} og {lastcompany} producerede filmen {movie}"
   ],
   "/dialog/no.valid.api.dialog": [
-    null
+    "Den indtastede A P I-nøgle er ikke gyldig.  Se read me-filen for instruktioner om, hvordan du får en."
   ],
   "/dialog/movie.cast.dialog": [
     "Her er casten af ​​{movie}; {actorlist} og {lastactor}",
     "Følgende personer (star | play | act) i filmen {movie}; {actorlist} og {lastactor}"
   ],
   "/dialog/bad.movie.genre.catagory.dialog": [
-    null
+    "Jeg kan ikke finde nogen (tv|tv)-shows med genren {genre}"
   ],
   "/dialog/no.api.dialog": [
-    null
+    "Du skal indtaste din T M D B A P I nøgle derhjemme dot mycroft dot A I for at bruge filmmesterfærdigheden"
   ],
   "/dialog/no.info.general.dialog": [
     "Jeg er ked af det, jeg kan ikke finde den liste, du leder efter lige nu; spørg igen senere."
