@@ -1,4 +1,4 @@
-name: Run script on merge to dev by gitlocalize-app
+name: gitlocalize sync
 
 on:
   workflow_dispatch:
@@ -19,6 +19,11 @@ jobs:
         uses: actions/setup-python@v1
         with:
           python-version: 3.9
+          
+      - name: Run script if manual dispatch
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          python scripts/sync_translations.py
           
       - name: Run script if merged by gitlocalize-app[bot]
         if: github.event_name == 'push' && github.event.head_commit.author.username == 'gitlocalize-app[bot]'
