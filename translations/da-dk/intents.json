@@ -1,51 +1,55 @@
 {
-    "/vocab/genre.movie.search.intent": [
-        "(list | find) film der er (i genren | en) {genre}",
-        "(list | find) {genre} film"
-    ],
-    "/vocab/movie.popular.intent": [
-        "(liste | s\u00f8gning | s\u00f8g efter) popul\u00e6re film",
-        "hvad er (| de) popul\u00e6re film (der spiller | er ude) nu"
-    ],
-    "/vocab/movie.information.intent": [
-        "(find | led efter | er der) (information | info) (p\u00e5 | om) (filmen |) {movie}",
-        "(giv | fort\u00e6l | hent) (| mig | os) (information | info) (p\u00e5 | om) (filmen | ) {movie}",
-        "(har du | kan du f\u00e5) (info | information) (p\u00e5| om) (filmen | ) {movie}"
-    ],
-    "/vocab/movie.production.intent": [
-        "(hvem | hvilket firma) ahr (produceret | lavet) filmen {movie}"
-    ],
-    "/vocab/movie.top.intent": [
-        "(list | hvad er | s\u00f8g efter) de (top | mest popul\u00e6re | h\u00f8jst vurderede) film (der spiller | er ude) (| nu)"
-    ],
-    "/vocab/movie.genres.intent": [
-        "hvad (genrer | genre) tilh\u00f8rer (filmen|) {movie}",
-        "hvad er (genrer | genre) af (filmen|) {movie}",
-        "hvad (genrer | genre) er (filmem | ) {film}"
-    ],
-    "/vocab/movie.recommendations.intent": [
-        "anbefal en film der (ligner | lignende) {movie}",
-        "hvilke film (ville | kan) du anbefale (der ligner | der lignende) {movie}",
-        "(list | f\u00e5) (gode|) film (der ligner | der lignende) {movie}"
-    ],
-    "/vocab/movie.year.intent": [
-        "(hvilket \u00e5r | hvorn\u00e5r | hvilken dato) var filmen {movie} (lavet | frigivet)"
-    ],
-    "/vocab/movie.runtime.intent": [
-        "Hvor lang tid (er|varer) (filmen|)  {movie}",
-        "Hvad er spiletiden (for|p\u00e5) (filmen|) (film)",
-        "F\u00e5 (runtime | l\u00e6ngden) af (film | film | flick) {movie}"
-    ],
-    "/vocab/movie.description.intent": [
-        "Hvad handler filmen {movie} om",
-        "fort\u00e6l (mig | os) om (filmen|) {movie}",
-        "giv (mig | os) en (beskrivelse | synopsis) af (filmen|) {movie}"
-    ],
-    "/vocab/genre.tv.search.intent": [
-        "(list | find) (tv-shows | fjernsynsprogrammer | programmer) der er (en |) {genre}",
-        "(list | find) {genre} (tv-shows | fjernsnsprogrammer | programmer)"
-    ],
-    "/vocab/movie.cast.intent": [
-        "hvem (spiller | er) i filmen {film}"
-    ]
+  "/vocab/genre.movie.search.intent": [
+    "(list | find) film der er (i genren | en) {genre}",
+    "(list | find) {genre} film"
+  ],
+  "/vocab/movie.popular.intent": [
+    "(liste | søgning | søg efter) populære film",
+    "hvad er (| de) populære film (der spiller | er ude) nu"
+  ],
+  "/vocab/movie.information.intent": [
+    "(find | led efter | er der) (information | info) (på | om) (filmen |) {movie}",
+    "(giv | fortæl | hent) (| mig | os) (information | info) (på | om) (filmen | ) {movie}",
+    "(har du | kan du få) (info | information) (på| om) (filmen | ) {movie}"
+  ],
+  "/vocab/movie.genre.search.intent": [
+    "(liste|find) (film|film|film), der er (a| ) {genre}",
+    "(liste|find) {genre} (film|film|film)"
+  ],
+  "/vocab/movie.production.intent": [
+    "(hvem | hvilket firma) ahr (produceret | lavet) filmen {movie}"
+  ],
+  "/vocab/movie.top.intent": [
+    "(list | hvad er | søg efter) de (top | mest populære | højst vurderede) film (der spiller | er ude) (| nu)"
+  ],
+  "/vocab/movie.genres.intent": [
+    "hvad (genrer | genre) tilhører (filmen|) {movie}",
+    "hvad er (genrer | genre) af (filmen|) {movie}",
+    "hvad (genrer | genre) er (filmem | ) {movie}"
+  ],
+  "/vocab/movie.recommendations.intent": [
+    "anbefal en film der (ligner | lignende) {movie}",
+    "hvilke film (ville | kan) du anbefale (der ligner | der lignende) {movie}",
+    "(list | få) (gode|) film (der ligner | der lignende) {movie}"
+  ],
+  "/vocab/movie.year.intent": [
+    "(hvilket år | hvornår | hvilken dato) var filmen {movie} (lavet | frigivet)"
+  ],
+  "/vocab/movie.runtime.intent": [
+    "Hvor lang tid (er|varer) (filmen|)  {movie}",
+    "Hvad er (runtime|længde) af (film|film|flick) {movie}",
+    "Få (runtime | længden) af (film | film | flick) {movie}"
+  ],
+  "/vocab/movie.description.intent": [
+    "hvad handler (filmen|flicken) {movie} om",
+    "fortæl (mig | os) om (filmen|) {movie}",
+    "giv (mig | os) en (beskrivelse | synopsis) af (filmen|) {movie}"
+  ],
+  "/vocab/genre.tv.search.intent": [
+    "(list | find) (tv-shows | fjernsynsprogrammer | programmer) der er (en |) {genre}",
+    "(list | find) {genre} (tv-shows | fjernsnsprogrammer | programmer)"
+  ],
+  "/vocab/movie.cast.intent": [
+    "hvem (spiller | er) i filmen {movie}"
+  ]
 }
