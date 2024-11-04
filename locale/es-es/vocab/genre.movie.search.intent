@@ -1,2 +1,2 @@
-(listar|encontrar) (películas|filmes) que son (un| ) {genre}
 (listar|encontrar) (películas|filmes) de {genre}
+(listar|encontrar) (películas|filmes) que son (un| ) {genre}

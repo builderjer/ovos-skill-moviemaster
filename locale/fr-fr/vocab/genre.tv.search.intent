@@ -1,2 +1,2 @@
-(liste|trouve|récupère) les (émissions| émissions télé) du genre {genre}
 (liste|trouve|récupère) les (émissions télé|émissions) {genre}
+(liste|trouve|récupère) les (émissions| émissions télé) du genre {genre}
