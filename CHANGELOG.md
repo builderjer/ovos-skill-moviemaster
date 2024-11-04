@@ -1,39 +1,13 @@
 # Changelog
 
-## [Unreleased](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/tree/HEAD)
+## [0.0.4a1](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/tree/0.0.4a1) (2024-10-15)
 
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/compare/V0.0.1a5...HEAD)
-
-**Closed issues:**
-
-- Not on PyPi [\#6](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/issues/6)
-
-## [V0.0.1a5](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/tree/V0.0.1a5) (2024-06-08)
-
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/compare/V0.0.1a4...V0.0.1a5)
-
-## [V0.0.1a4](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/tree/V0.0.1a4) (2024-06-08)
-
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/compare/V0.0.1a3...V0.0.1a4)
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/compare/V0.0.1...0.0.4a1)
 
 **Merged pull requests:**
 
-- feat: fix tests and workflows? [\#9](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/pull/9) ([builderjer](https://github.com/builderjer))
-- fix: org\_name [\#5](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/pull/5) ([builderjer](https://github.com/builderjer))
-- feat/workflows [\#3](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/pull/3) ([builderjer](https://github.com/builderjer))
-- feat/update\_to\_dev [\#2](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/pull/2) ([builderjer](https://github.com/builderjer))
-
-## [V0.0.1a3](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/tree/V0.0.1a3) (2024-02-10)
-
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/compare/V0.0.1a2...V0.0.1a3)
-
-## [V0.0.1a2](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/tree/V0.0.1a2) (2024-01-28)
-
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/compare/3f841b6b950d223958ad4616b7d08910436509c5...V0.0.1a2)
-
-**Merged pull requests:**
-
-- Update [\#1](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/pull/1) ([builderjer](https://github.com/builderjer))
+- fix:long description [\#11](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/pull/11) ([JarbasAl](https://github.com/JarbasAl))
+- fix:update\_requirements [\#10](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/pull/10) ([JarbasAl](https://github.com/JarbasAl))
 
 
 
