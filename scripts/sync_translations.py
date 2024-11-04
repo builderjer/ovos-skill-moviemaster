@@ -16,6 +16,8 @@ for lang in os.listdir(tx):
     vocs = f"{tx}/{lang}/vocabs.json"
     regexes = f"{tx}/{lang}/regexes.json"
 
+    os.makedirs(f"{locale}/{lang}", exist_ok=True)
+    
     if os.path.isfile(intents):
         with open(intents) as f:
             data = json.load(f)
