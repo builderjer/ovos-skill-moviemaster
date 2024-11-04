@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.0.4a2](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/tree/0.0.4a2) (2024-11-04)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/compare/0.0.4a1...0.0.4a2)
+
+**Merged pull requests:**
+
+- de-de/translate [\#14](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/pull/14) ([gitlocalize-app[bot]](https://github.com/apps/gitlocalize-app))
+- da-dk/translate [\#13](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/pull/13) ([gitlocalize-app[bot]](https://github.com/apps/gitlocalize-app))
+
 ## [0.0.4a1](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/tree/0.0.4a1) (2024-10-15)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/compare/V0.0.1...0.0.4a1)
