@@ -1,6 +1,7 @@
 {
   "skill_id": "skill-moviemaster.openvoiceos",
   "source": "https://github.com/OpenVoiceOS/ovos-skill-moviemaster",
+  "name": "Movie Master",
   "description": "Find oplysninger om film, skuespillere og produktionsdetaljer. Find nemt information om en film med din stemme.",
   "examples": [
     "Hvad handler filmen _______ om?",
