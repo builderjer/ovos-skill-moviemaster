@@ -1,8 +1,8 @@
 # Changelog
 
-## [0.0.8a3](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/tree/0.0.8a3) (2024-12-02)
+## [0.0.8a4](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/tree/0.0.8a4) (2024-12-02)
 
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/compare/0.0.8a2...0.0.8a3)
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/compare/0.0.8a2...0.0.8a4)
 
 **Merged pull requests:**
 
