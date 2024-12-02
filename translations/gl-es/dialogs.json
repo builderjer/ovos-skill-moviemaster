@@ -1,0 +1,81 @@
+{
+    "/dialog/movie.popular.dialog": [
+        "As novas películas populares que están en salas son {popularlist} e {lastmovie}.",
+        "{popularlist} e {lastmovie} encabezan nestes momentos a lista de éxitos."
+    ],
+    "/dialog/movie.production.single.dialog": [
+        "A produtora {company}. produciu a película {movie}"
+    ],
+    "/dialog/bad.tv.genre.catagory.dialog": [
+        "Non atopo ningún programa de (tele|televisión) do xénero {genre}"
+    ],
+    "/dialog/movie.genre.multiple.dialog": [
+        "(a película|o filme) considérase un {genrelist} ou {genrelistlast}",
+        "(a película|o filme|a peli) pode atoparse nun dos xéneros; {genrelist} e {genrelistlast}"
+    ],
+    "/dialog/genre.movie.search.dialog": [
+        "os filmes do xénero {genre} son;"
+    ],
+    "/dialog/genre.tv.search.dialog": [
+        "os programas de (televisión|tele) do xénero {genre} son;"
+    ],
+    "/dialog/no.info.dialog": [
+        "Síntocho. Non atopo ningunha nformación sobre (a película|o filme) {movie}"
+    ],
+    "/dialog/movie.description.dialog": [
+        "Velaquí unha sinopse (da película|do filme) {movie}.",
+        "(a película|o filme) {movie} trata disto."
+    ],
+    "/dialog/movie.description.error.dialog": [
+        "Non dou atopado información sobre (a película|o filme|a peli) {movie}."
+    ],
+    "/dialog/movie.recommendations.dialog": [
+        "Recomendo as películas {movielist} e {lastmovie}. se che gusta (a película|a peli) {movie}",
+        "As películas {movielist} e {lastmovie} son unha boa escolla se che gustou (a película|a peli) {movie}"
+    ],
+    "/dialog/movie.info.response.dialog": [
+        "{movie} estreouse en {year}. cun orzamento de {budget} dólares."
+    ],
+    "/dialog/movie.top.dialog": [
+        "Estas son as películas (de máis éxito|máis populares) (que saíron|que están botando) agora; {toplist}. e {lastmovie}",
+        "{toplist}. e {lastmovie} son as películas (de máis éxito|máis populares) (que saíron|que están botando) agora."
+    ],
+    "/dialog/fallback.api.dialog": [
+        "Volvendo á API predefinida"
+    ],
+    "/dialog/movie.year.dialog": [
+        "(a película|o filme|a peli) {movie} (rodouse|estreouse) en {year}"
+    ],
+    "/dialog/movie.genre.single.dialog": [
+        "(a película|o filme) {movie} pode considerarse un {genre}",
+        "Podes atopar (a película|a peli) {movie} na sección {genre}"
+    ],
+    "/dialog/movie.year.error.dialog": [
+        "Non atopo a data da estrea (da película|do filme|da peli) {movie}"
+    ],
+    "/dialog/movie.production.multiple.dialog": [
+        "As empresas {companies} e {lastcompany} produciron a película {movie}",
+        "{companies} e {lastcompany} produciron a película {movie}"
+    ],
+    "/dialog/no.valid.api.dialog": [
+        "A chave A P I que introduciches non é válida. Consulta o ficheiro Léame para ver as instrucións sobre como obter unha."
+    ],
+    "/dialog/movie.cast.dialog": [
+        "Velaquí o elenco de {movie}; {actorlist} e {lastactor}",
+        "As seguintes persoas (protagonizan|interpretan|actúan) na película {movie}; {actorlist} e {lastactor}"
+    ],
+    "/dialog/bad.movie.genre.catagory.dialog": [
+        "Non atopo ningún programa de (tele|televisión) do xénero {genre}"
+    ],
+    "/dialog/no.api.dialog": [
+        "Tes que introducir a túa chave T M D B  A P I en inicio punto mycroft punto A I para usares a habilidade de mestre de filmes"
+    ],
+    "/dialog/no.info.general.dialog": [
+        "Síntocho. Non atopo a lista que procuras nestes momentos; volve preguntar máis tarde."
+    ],
+    "/dialog/movie.runtime.dialog": [
+        "{movie} é (unha película|un filme|unha peli) de {runtime} minutos.",
+        "(a película|o filme|a peli) {movie}. dura {runtime} minutos.",
+        "A ver {movie}; Podes contar cuns {runtime} antes de faceres unha pausa para ir ao servizo."
+    ]
+}

@@ -1,0 +1,3 @@
+(a película|o filme|a peli) {movie}. dura {runtime} minutos.
+A ver {movie}; Podes contar cuns {runtime} antes de faceres unha pausa para ir ao servizo.
+{movie} é (unha película|un filme|unha peli) de {runtime} minutos.
