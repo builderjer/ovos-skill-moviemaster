@@ -1,0 +1,55 @@
+{
+    "/vocab/genre.movie.search.intent": [
+        "(fai unha lista de|busca) (películas|filmes) que sexan (de| ) {genre}",
+        "(fai unha lista de|busca) (películas|filmes) de {genre}"
+    ],
+    "/vocab/movie.popular.intent": [
+        "(fai unha lista de|busca|procura|atopa) (películas|filmes|pelis) populares",
+        "cales son (as|os) (películas|filmes|pelis) populares (que botan|que exhiben) ( |agora)"
+    ],
+    "/vocab/movie.information.intent": [
+        "(tes|podes conseguir) (información|datos) (sobre|acerca de) (a película|o filme|a peli) {movie}",
+        "(busca|atopa|procura|hai) (información|datos) (sobre|acerca de) (a película|o filme|a peli) {movie}",
+        "(dáme|dime|atópame) (dános|dinos|atópanos) (información|datos) (sobre|acerca de) (a película|o filme|a peli) {movie}"
+    ],
+    "/vocab/movie.genre.search.intent": [
+        "(fai unha lista de|busca) (películas|filmes|pelis) que sexan (de| ) {genre}",
+        "(fai unha lista de|busca) (películas|filmes|pelis) de {genre}"
+    ],
+    "/vocab/movie.production.intent": [
+        "(quen|que empresa) (produciu|fixo) o filme {movie}"
+    ],
+    "/vocab/movie.top.intent": [
+        "(fai unha lista de|cales son|busca) (as películas|os filme|as pelis) (mellores|máis popularesr|con mellores puntuacións) (que botan|que exhiben) (|agora)"
+    ],
+    "/vocab/movie.genres.intent": [
+        "de que (xéneros|xénero) é (a película|o filme|a peli) {movie}",
+        "a que (xéneros|xénero) pertence (a película|o filme|a peli) {movie}",
+        "(cales|cal) (son os|é o) (xéneros|xénero) (da película|do filme|da peli) {movie}"
+    ],
+    "/vocab/movie.recommendations.intent": [
+        "(fai unha lista de|busca) (boas|bos) (películas|filmes|pelis) (parecidas a|do estilo de) {movie}",
+        "recomenda (películas|filmes|pelis) (parecidas a|do estilo de) {movie}",
+        "que (películas|filmes|pelis) (recomendarías|recomendas) (parecidas a|do estilo de) {movie}"
+    ],
+    "/vocab/movie.year.intent": [
+        "(en que ano|cando|en que data) se (rodou|estreou) (a película|o filme|a peli) {movie}"
+    ],
+    "/vocab/movie.runtime.intent": [
+        "Busca canto dura (a película|o filme|a peli) {movie}",
+        "Canto dura (a película|o filme|a peli) {movie}",
+        "Cal é a duración (da película|do filme|da peli) {movie}"
+    ],
+    "/vocab/movie.description.intent": [
+        "(dáme|atópame) unha (descrición|sinopse) (da película|do filme|da peli) {movie}",
+        "(dime|dinos) de que trata (a película|o filme|a peli) {movie}",
+        "de que trata (a película|o filme|a peli) {movie}"
+    ],
+    "/vocab/genre.tv.search.intent": [
+        "(fai unha lista de|busca|atopa) (programas da tele|programas de televisión|programas) que sexan (|de) {genre}",
+        "(fai unha lista de|busca|atopa) (programas da tele|programas de televisión|programas) de {genre}"
+    ],
+    "/vocab/movie.cast.intent": [
+        "quen (actúa|traballa|está) (na película|no filme|na peli) {movie}"
+    ]
+}

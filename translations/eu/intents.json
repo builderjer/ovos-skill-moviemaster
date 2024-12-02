@@ -1,0 +1,55 @@
+{
+    "/vocab/genre.movie.search.intent": [
+        "(zerrendatu|aurkitu) {genre} diren (filmak|pelikulak)",
+        "(zerrendatu|aurkitu) {genre} (filmak|pelikulak)"
+    ],
+    "/vocab/movie.popular.intent": [
+        "(zerrendatu|aurkitu|bilatu) (film|pelikula) ezagunak",
+        "zein (film|pelikula) ezagun ari dira (ematen|botatzen) ( |orain)?"
+    ],
+    "/vocab/movie.information.intent": [
+        "(baduzu|lor dezakezu) (daturik|informaziorik) {movie} (filmari|pelikulari) buruz?",
+        "(aurkitu|lortu|bilatu|hona hemen) {movie} (filmari|pelikulari) buruzko (informazioa|datuak)",
+        "(eman|aurkeztu|eskaini) (|niri|guri) {movie} (filmari|pelikulari) buruzko (informazioa|datuak)"
+    ],
+    "/vocab/movie.genre.search.intent": [
+        "(zerrendatu|aurkitu) {genre} diren (filmak|pelikulak)",
+        "(zerrendatu|aurkitu) {genre} (filmak|pelikulak)"
+    ],
+    "/vocab/movie.production.intent": [
+        "(nork|zein konpainiak) (produzitu|egin) du {movie} filma?"
+    ],
+    "/vocab/movie.top.intent": [
+        "(zerrendatu|zein dira|bilatu) (|orain) (ematen|botatzen) ari diren (film|pelikula) (gorenak|ezagunenak|hobekien baloratuak)"
+    ],
+    "/vocab/movie.genres.intent": [
+        "zein (genero) (dagokio|dagozkio) {movie} (filmari|pelikulari)?",
+        "zein (generotan) sartzen da {movie} (filma|pelikula)?",
+        "zein (da|dira) {movie} (filmari|pelikulari) (dagokion|dagozkion) (genero|generoak)?"
+    ],
+    "/vocab/movie.recommendations.intent": [
+        "(zerrendatu|lortu) {movie} (filmaren|pelikularen) (antzeko|pareko) (film|pelikula) (|onak)",
+        "gomendatu {movie} (filmaren|pelikularen) (antzeko|pareko) (filmak|pelikulak)",
+        "zein (film|pelikula) (gomendatuko zenuke|gomendatzen duzu) {movie} (filmaren|pelikularen) (antzekoa|parekoa)?"
+    ],
+    "/vocab/movie.year.intent": [
+        "(zer urtetan|noiz|zer datetan) (egin|kaleratu) zuten {movie} (filma|pelikula)?"
+    ],
+    "/vocab/movie.runtime.intent": [
+        "Lortu {movie} (filmaren|pelikularen) (iraupena|luzera)",
+        "Zenbat irauten du {movie} (filmak|pelikulak)?",
+        "Zein da {movie} (filmaren|pelikularen) (iraupena|luzera)?"
+    ],
+    "/vocab/movie.description.intent": [
+        "(egin|aurkeztu) (|niri|guri) {movie} (filmaren|pelikularen) (deskribapena|laburpena)",
+        "aurkeztu (niri|guri) {movie} (filma|pelikula)",
+        "zeri buruzkoa da {movie} (filma|pelikula)?"
+    ],
+    "/vocab/genre.tv.search.intent": [
+        "(zerrendatu|aurkitu|lortu) {genre} diren (TB saioak|telebistako saioak|ikuskizunak)",
+        "(zerrendatu|aurkitu|lortu) {genre} (TB saioak|telebistako saioak|ikuskizunak)"
+    ],
+    "/vocab/movie.cast.intent": [
+        "nork (antzezten du|parte hartzen du|lan egiten du) {movie} (filman|pelikulan)?"
+    ]
+}

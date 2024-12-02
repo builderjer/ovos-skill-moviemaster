@@ -1,16 +1,33 @@
 # Changelog
 
-## [0.0.7a1](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/tree/0.0.7a1) (2024-11-20)
+## [0.0.8a4](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/tree/0.0.8a4) (2024-12-02)
 
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/compare/V0.0.6...0.0.7a1)
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/compare/0.0.8a2...0.0.8a4)
 
 **Merged pull requests:**
 
-- fix: requirements.txt [\#20](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/pull/20) ([JarbasAl](https://github.com/JarbasAl))
+- import basque translations [\#27](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/pull/27) ([JarbasAl](https://github.com/JarbasAl))
+- de-de/translate [\#24](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/pull/24) ([gitlocalize-app[bot]](https://github.com/apps/gitlocalize-app))
 
-## [V0.0.6](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/tree/V0.0.6) (2024-11-15)
+## [0.0.8a2](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/tree/0.0.8a2) (2024-12-02)
 
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/compare/0.0.6...V0.0.6)
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/compare/0.0.8a1...0.0.8a2)
+
+**Merged pull requests:**
+
+- import galician translations [\#25](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/pull/25) ([JarbasAl](https://github.com/JarbasAl))
+
+## [0.0.8a1](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/tree/0.0.8a1) (2024-11-25)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/compare/V0.0.7...0.0.8a1)
+
+**Merged pull requests:**
+
+- da-dk/translate [\#22](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/pull/22) ([gitlocalize-app[bot]](https://github.com/apps/gitlocalize-app))
+
+## [V0.0.7](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/tree/V0.0.7) (2024-11-20)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-moviemaster/compare/0.0.7...V0.0.7)
 
 
 
