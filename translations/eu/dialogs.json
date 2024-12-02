@@ -1,0 +1,81 @@
+{
+    "/dialog/movie.popular.dialog": [
+        "Orain estreinatu diren film ospetsu berriak {popularlist} eta {lastmovie} dira.",
+        "{popularlist} eta {lastmovie} dira oraintxe bertan film-zerrenden buru."
+    ],
+    "/dialog/movie.production.single.dialog": [
+        "{companies} ekoiztetxeak egin du {movie} filma"
+    ],
+    "/dialog/bad.tv.genre.catagory.dialog": [
+        "Ez dut aurkitzen {genre} generoko (TB|telebista) saiorik"
+    ],
+    "/dialog/movie.genre.multiple.dialog": [
+        "Jendearen ustez, (filma|pelikula) {genrelist} edo {genrelistlast} da",
+        "(Filma|pelikula) generoetako batean aurki daiteke"
+    ],
+    "/dialog/genre.movie.search.dialog": [
+        "{genre} generoko filmak hauek dira:"
+    ],
+    "/dialog/genre.tv.search.dialog": [
+        "{genre} generoko (telebista|TB) saioak hauek dira:"
+    ],
+    "/dialog/no.info.dialog": [
+        "Sentitzen dut.  Ezin dut {movie} (filmari|pelikulari) buruzko informaziorik aurkitu"
+    ],
+    "/dialog/movie.description.dialog": [
+        "hona hemen {movie} (filmaren|pelikularen) laburpena.",
+        "{movie} (filma|pelikula) honi buruzkoa da."
+    ],
+    "/dialog/movie.description.error.dialog": [
+        "Badirudi ezin dudala {movie} (filmari|pelikulari) buruzko informaziorik aurkitu."
+    ],
+    "/dialog/movie.recommendations.dialog": [
+        "{movielist} eta {lastmovie} filmak gomendatzen dizkizut, baldin eta {movie} (filma|pelikula) gustuko baduzu",
+        "{movielist} eta {lastmovie} filmak aukera ona dira, baldin eta {movie} (filma|pelikula) gustuko baduzu"
+    ],
+    "/dialog/movie.info.response.dialog": [
+        "{movie} {year} urtean estreinatu zen, eta {budget} dolarreko aurrekontua izan zuen."
+    ],
+    "/dialog/movie.top.dialog": [
+        "Hauek dira orain (estreinatu diren|ikusgai dauden) film (ezagunenak|ospetsuenak)",
+        "{toplist}. eta {lastmovie} dira orain (estreinatu diren|ikusgai dauden) film (ezagunenak|ospetsuenak)."
+    ],
+    "/dialog/fallback.api.dialog": [
+        "Lehenetsitako A P Ira atzera egiten"
+    ],
+    "/dialog/movie.year.dialog": [
+        "{movie} (filma|pelikula) {year} urtean (egin|kaleratu) zen"
+    ],
+    "/dialog/movie.genre.single.dialog": [
+        "{movie} (filma|pelikula) {genre} generokoa dela esan daiteke",
+        "{movie} (filma|pelikula) {genre} atalean aurki dezakezu"
+    ],
+    "/dialog/movie.year.error.dialog": [
+        "Ezin dut aurkitu {movie} (filma|pelikula) noiz kaleratu zen"
+    ],
+    "/dialog/movie.production.multiple.dialog": [
+        "{companies} eta {lastcompany} konpainiak dira {movie} filmaren ekoizle",
+        "{companies} eta {lastcompany} dira {movie} filmaren ekoizle"
+    ],
+    "/dialog/no.valid.api.dialog": [
+        "Zuk idatzi duzun A P I gakoa ez da balekoa.  Kontsultatu irakurri artxiboa gako bat eskuratzeko jarraibideak lortzeko."
+    ],
+    "/dialog/movie.cast.dialog": [
+        "Hona hemen {movie} filmeko aktoreak",
+        "Pertsona hauek (antzezten dute|parte hartzen dute|lan egiten dute) {movie} filmean"
+    ],
+    "/dialog/bad.movie.genre.catagory.dialog": [
+        "Ez dut aurkitzen {genre} generoko (TB|telebista) saiorik"
+    ],
+    "/dialog/no.api.dialog": [
+        "T M D B  A P I gakoa sartu behar duzu mycroft dot A I hasierako dot-ean movie master trebetasuna erabiltzeko."
+    ],
+    "/dialog/no.info.general.dialog": [
+        "Sentitzen dut. Ezin dut bilatzen ari zaren zerrenda aurkitu oraintxe bertan"
+    ],
+    "/dialog/movie.runtime.dialog": [
+        "{movie} (filmak|pelikulak) {runtime} minutu irauten du.",
+        "{movie} (filmak|pelikulak) {runtime} minutu irauten du.",
+        "{movie} ikusten"
+    ]
+}
