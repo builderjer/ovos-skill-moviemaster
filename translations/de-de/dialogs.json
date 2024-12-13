@@ -10,7 +10,7 @@
     "Ich kann keine (TV|Fernseh-) Sendungen mit dem Genre {genre} finden"
   ],
   "/dialog/movie.genre.multiple.dialog": [
-    "der (clip| film | flick) kann in einem der Genres gefunden werden; {genrelist} und {genrelistlast}",
+    "der (clip| film | streifen) kann in einem der Genres gefunden werden; {genrelist} und {genrelistlast}",
     "Die Leute betrachten den Film als {genrelist} oder {genrelistlast}"
   ],
   "/dialog/genre.movie.search.dialog": [
@@ -44,11 +44,11 @@
     "Greife auf die standard A P I zurück"
   ],
   "/dialog/movie.year.dialog": [
-    "der (movie| film|flick) {movie} wurde am {year} veröffentlicht"
+    "der (movie| film|streifen) {movie} wurde am {year} veröffentlicht"
   ],
   "/dialog/movie.genre.single.dialog": [
     "Der (Movie | Film) {movie} könnte als {genre} angesehen werden.",
-    "Du findest den (film|flick) {movie} im Abschnitt {genre}"
+    "Du findest den (film|streifen) {movie} im Abschnitt {genre}"
   ],
   "/dialog/movie.year.error.dialog": [
     "Ich kann keinen Veröffentlichungstermin für den (Film|Film|Streifen) {movie} finden."
@@ -74,8 +74,8 @@
     "Es tut mir leid, ich kann die gesuchte Liste derzeit nicht finden. Bitte frage mich später noch einmal."
   ],
   "/dialog/movie.runtime.dialog": [
-    "Der (movie | film | flick) {movie} läuft {runtime} Minuten.",
-    "Der (movie|film|flick) {movie} ist {runtime} Minuten lang.",
+    "Der (movie | film | streifen) {movie} läuft {runtime} Minuten.",
+    "Der (movie|film|streifen) {movie} ist {runtime} Minuten lang.",
     "Schaue {movie}; du musst mit ungefähr {runtime} Minuten rechnen, bevor du eine Toilettenpause einlegen kannst."
   ]
 }
