@@ -28,7 +28,7 @@
     "Welches (Genres|Genre) (hat|ist) das (Movie|Film|streifen) {movie}"
   ],
   "/vocab/movie.recommendations.intent": [
-    null,
+    "empfehle (einen|) (Movie|Film|Streifen) (ähnlich zu|ähnlich) (wie|){movie}",
     "Was empfehlst du (ähnliche|vergleichbare) (movies|Filme|Filme) wie {movie}",
     "(liste|suche|finde) (|gute) (movies | Filme | streifen) (ähnlich wie|vergleichbar mit) {movie}"
   ],
@@ -37,7 +37,7 @@
   ],
   "/vocab/movie.runtime.intent": [
     "Wie (lange|lang) ist der (movie|film|streifen) {movie}",
-    null,
+    "Was ist die (laufzeit|länge) vom (movie|Film|Streifen) {movie}",
     "suche die (Laufzeit | Länge) des (Films|Movies|streifen) {movie}"
   ],
   "/vocab/movie.description.intent": [
