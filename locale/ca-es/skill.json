@@ -1,0 +1,25 @@
+{
+  "skill_id": "skill-moviemaster.openvoiceos",
+  "source": "https://github.com/OpenVoiceOS/ovos-skill-moviemaster",
+  "name": "Movie Master",
+  "description": "Cerca informació sobre pel·lícules, actors i detalls de producció. Trobeu fàcilment informació sobre una pel·lícula amb la veu.",
+  "examples": [
+    "De què tracta la pel·lícula _______?",
+    "Explica'm coses de la pel·lícula _______",
+    "Qui surt a la pel·lícula _______?",
+    "A quins gèneres pertany la pel·lícula _______?",
+    "Busca informació sobre la pel·lícula _______.",
+    "Quan es va fer la pel·lícula _______?",
+    "Tens informació sobre la pel·lícula _______?",
+    "Quines pel·lícules populars hi ha ara en cartellera?",
+    "Quines pel·lícules com _______  recomanes?",
+    "Quant dura la pel·lícula _______?",
+    "Quines són les pel·lícules amb millor puntuació?"
+  ],
+  "tags": [
+    "TMDB",
+    "Pel·lícules",
+    "Actors",
+    "entreteniment"
+  ]
+}
