@@ -1,0 +1,81 @@
+{
+  "/dialog/movie.popular.dialog": [
+    "Les pel·lícules populars noves que hi ha ara són {popularlist} i {lastmovie}.",
+    "{popularlist} i {lastmovie} encapçalen les llistes de pel·lícules ara mateix."
+  ],
+  "/dialog/movie.production.single.dialog": [
+    "La companyia {company}, va produir la pel·lícula {movie}"
+  ],
+  "/dialog/bad.tv.genre.catagory.dialog": [
+    "No trobo cap xou de televisió del gènere {genre}"
+  ],
+  "/dialog/movie.genre.multiple.dialog": [
+    "(La pel·lícula|El film) es pot trobar en un dels gèneres; {genrelist} i {genrelistlast}",
+    "Hom considera que (la pel·lícula|el film) com a {genrelist} o {genrelistlast}"
+  ],
+  "/dialog/genre.movie.search.dialog": [
+    "les pel·lícules del gènere {genre} són;"
+  ],
+  "/dialog/genre.tv.search.dialog": [
+    "els programes de televisió amb el gènere {genre} són:"
+  ],
+  "/dialog/no.info.dialog": [
+    "No trobo cap informació sobre (el film|la pel·lícula) {movie}"
+  ],
+  "/dialog/movie.description.dialog": [
+    "la pel·lícula {movie} tracta d'això.",
+    "aquí teniu una sinopsi de la pel·lícula {movie}."
+  ],
+  "/dialog/movie.description.error.dialog": [
+    "Sembla que no trobo informació sobre la pel·lícula {movie}."
+  ],
+  "/dialog/movie.recommendations.dialog": [
+    "Si us agrada (la pel·lícula|el film) {movie}, us recomano les pel·lícules {movielist} i {lastmovie}",
+    "Les pel·lícules {movielist} i {lastmovie} són una bona opció si us agrada la pel·lícula {movie}"
+  ],
+  "/dialog/movie.info.response.dialog": [
+    "{movie} es va estrenar el {year}, amb un pressupost de {budget} dòlars."
+  ],
+  "/dialog/movie.top.dialog": [
+    "Aquestes són les pel·lícules més populars en exposició ara; {toplist} i {lastmovie}",
+    "{toplist} i {lastmovie} són les pel·lícules més populars en cartellera."
+  ],
+  "/dialog/fallback.api.dialog": [
+    "S'està tornant a l'API predeterminada"
+  ],
+  "/dialog/movie.year.dialog": [
+    "(La pel·lícula|El film) {movie} es va estrenar el {year}"
+  ],
+  "/dialog/movie.genre.single.dialog": [
+    "(La pel·lícula|El film) {movie} es podria considerar un {genre}",
+    "Podeu trobar la pel·lícula {movie} a la secció {genre}"
+  ],
+  "/dialog/movie.year.error.dialog": [
+    "No trobo la data d'estrena de la pel·lícula {movie}"
+  ],
+  "/dialog/movie.production.multiple.dialog": [
+    "Les companyies {companies} i {lastcompany} produiren la pel·lícula {movie}",
+    "{companies} i {lastcompany} van produir la pel·lícula {movie}"
+  ],
+  "/dialog/no.valid.api.dialog": [
+    "La clau API que heu introduït no és vàlida. Vegeu el fitxer llegeix-me per a saber com obtenir-ne una."
+  ],
+  "/dialog/movie.cast.dialog": [
+    "Aquí teniu el repartiment de {movie}; {actorlist} i {lastactor}",
+    "Les persones següents (actuen en|apareixen en|formen part del repartiment de) la pel·lícula {movie}: {actorlist} i {lastactor}"
+  ],
+  "/dialog/bad.movie.genre.catagory.dialog": [
+    "No trobo cap xou de televisió del gènere {genre}"
+  ],
+  "/dialog/no.api.dialog": [
+    "Heu d'introduir la vostra clau A P I de T M D B a H O M E punt maicroft punt A I per a usar l'habilitat movie master"
+  ],
+  "/dialog/no.info.general.dialog": [
+    "No trobo la llista que busqueu; torneu a provar-ho més tard."
+  ],
+  "/dialog/movie.runtime.dialog": [
+    "(La pel·lícula|La pel·li|El film) {movie} dura {runtime} minuts.",
+    "(La pel·lícula|El film) {movie} té una durada de {runtime} minuts.",
+    "Esteu mirant {movie}; Podeu esperar uns {runtime} minuts abans de poder fer una pausa al bany."
+  ]
+}
