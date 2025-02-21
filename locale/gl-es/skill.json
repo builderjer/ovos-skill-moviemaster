@@ -1,0 +1,25 @@
+{
+  "skill_id": "skill-moviemaster.openvoiceos",
+  "source": "https://github.com/OpenVoiceOS/ovos-skill-moviemaster",
+  "name": "Movie Master",
+  "description": "Busca información sobre filmes, actores, actrices e detalles de produción. Consigue información sobre unha película coa túa voz facilmente.",
+  "examples": [
+    "(Sobre|De) que (trata|vai) (a película|a peli|o filme) _______?",
+    "Fálame (da película|da peli|do filme) _______",
+    "Quen (actúa|aparece) (na película|na peli|no filme) _______?",
+    "A que xénero pertence (a película|a peli|o filme) _______?",
+    "(Busca|Buscar|Procura|Procurar|Atopa|Atopar|Consigue|Conseguir) (info|información) (sobre a|sobre o|da|do) (película|peli|filme) _______.",
+    "(Cando se fixo|De cando é) (a película|a peli|o filme) _______?",
+    "Tes (info|información) (sobre a|sobre o|da|do) (película|peli|filme) _______?",
+    "Que (películas|pelis|filmes) (populares|coñecidas) (se botan|se están botando|se están a botar|se poñen|se están poñendo|se están a poñer|se pon|se están pondo|se están a pór|se ven|se poden ver|se miran|se poden mirar|se reproducen|se están reproducindo|se están a reproducir) agora mesmo?",
+    "Que (películas|pelis|filmes) recomendas (coma|como|do estilo de|do tipo de|en plan) _______?",
+    "Canto dura (a película|a peli|o filme) _______?",
+    "Cales son (as películas|as pelis|os filmes) (con mellor valoración|con maior valoración|con máis puntuación|con máis valoración|con mellor puntuación|con maior puntuación|mellor valoradas|mellor valorados|mellor puntuadas|mellor puntuados|máis puntuadas|máis puntuados)?"
+  ],
+  "tags": [
+    "TMDB",
+    "(películas|pelis|filmes)",
+    "(actores|actrices|elenco)",
+    "entretemento"
+  ]
+}
